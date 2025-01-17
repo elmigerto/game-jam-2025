@@ -65,8 +65,11 @@ MonoBehaviour:
         m_Untranslated: 
       Text:
         m_Untranslated: 
+      m_CodeSample: 
+      m_PostInstructionImage: {fileID: 0}
       m_Tutorial: {fileID: 0}
       m_Image: {fileID: 0}
+      m_VideoUrl: 
       m_Video: {fileID: 32900000, guid: 6f0ce9b5d31f44b9cbb3501409e8913f, type: 3}
       m_CriteriaCompletion: 0
       m_Criteria:
@@ -77,6 +80,7 @@ MonoBehaviour:
         - m_SelectorType: 1
           m_ViewType:
             m_TypeName: 
+          m_FocusEditorWindow: 0
           m_EditorWindowType:
             m_TypeName: UnityEditor.ProjectBrowser, UnityEditor.CoreModule, Version=0.0.0.0,
               Culture=neutral, PublicKeyToken=null
@@ -114,6 +118,7 @@ MonoBehaviour:
         - m_SelectorType: 1
           m_ViewType:
             m_TypeName: 
+          m_FocusEditorWindow: 0
           m_EditorWindowType:
             m_TypeName: UnityEditor.SceneView, UnityEditor.CoreModule, Version=0.0.0.0,
               Culture=neutral, PublicKeyToken=null
@@ -135,8 +140,11 @@ MonoBehaviour:
           Let\u2019s add a Hoverbot!\n\n<b>Prefabs</b> are templates for GameObjects
           with preset components. \n\nThey're stored as assets that you can simply
           drag into the Scene view."
+      m_CodeSample: 
+      m_PostInstructionImage: {fileID: 0}
       m_Tutorial: {fileID: 0}
       m_Image: {fileID: 0}
+      m_VideoUrl: 
       m_Video: {fileID: 0}
       m_CriteriaCompletion: 0
       m_Criteria:
@@ -158,8 +166,11 @@ MonoBehaviour:
 
           Select
           <b>Next</b> to continue.'
+      m_CodeSample: 
+      m_PostInstructionImage: {fileID: 0}
       m_Tutorial: {fileID: 0}
       m_Image: {fileID: 0}
+      m_VideoUrl: 
       m_Video: {fileID: 0}
       m_CriteriaCompletion: 0
       m_Criteria:

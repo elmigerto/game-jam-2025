@@ -414,7 +414,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1907955517424277881, guid: 20d55d3c6acd84a17a069d10d1073538, type: 3}
       propertyPath: m_Mass
-      value: 18
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907955517424277881, guid: 20d55d3c6acd84a17a069d10d1073538, type: 3}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2568550424158344999, guid: 20d55d3c6acd84a17a069d10d1073538, type: 3}
       propertyPath: m_Name
@@ -820,6 +824,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1907955517424277881, guid: 20d55d3c6acd84a17a069d10d1073538, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2568550424158344999, guid: 20d55d3c6acd84a17a069d10d1073538, type: 3}
       propertyPath: m_Name
       value: PlayerTwo

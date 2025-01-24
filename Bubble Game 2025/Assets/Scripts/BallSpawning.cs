@@ -7,7 +7,8 @@ public class BallSpawning : MonoBehaviour
 
     private System.Random rnd = new System.Random();
     public float interval = 2f; // Time interval in seconds
-    public int force = 8;
+    public int force = 4;
+
     private float timer = 0f;  // Tracks elapsed time
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

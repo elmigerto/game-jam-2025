@@ -4,14 +4,10 @@ using UnityEngine;
 public class BallSpawning : MonoBehaviour
 {
     public GameObject BallPrefab;
-    public AudioClip spawnSound;
-    public float soundVolume = 1f; // Public variable to adjust volume
-
     private System.Random rnd = new System.Random();
     public float interval = 2f; // Time interval in seconds
     public int forceHoricontal = 4;
     public int forceVertical = 2;
-
     private float timer = 0f;  // Tracks elapsed time
 
     // Update is called once per frame
@@ -24,11 +20,11 @@ public class BallSpawning : MonoBehaviour
         if (timer >= interval)
         {
             timer -= interval; // Reset timer (keep remainder for accuracy)
-            InstantiateBall();        // Call the desired method
+            InstantiateSeed();        // Call the desired method
         }
     }
 
-    public void InstantiateBall()
+    public void InstantiateSeed()
     {
         var currentBall = Instantiate(BallPrefab, this.transform.position + new Vector3(0, 2, 0), new Quaternion());
         var vX = rnd.Next(-forceHoricontal, forceHoricontal);

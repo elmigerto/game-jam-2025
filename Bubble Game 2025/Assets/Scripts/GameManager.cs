@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
     {
         Score += points;
         UpdateScoreUI();
+        SoundManager.PlaySound(SoundManager.Instance.pointSound);
     }
 
     // Advances to the next level
@@ -113,6 +114,8 @@ public class GameManager : MonoBehaviour
 
     internal static void OnPlayerDestroyed(GameObject gameObject)
     {
+
+        // SoundManager.PlaySound(SoundManager.Instance.pl);
         Debug.Log("A player has died!!");
     }
 }

@@ -129,4 +129,14 @@ public class PlayerMovement : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void onDrestroy()
+    {
+        isGrounded = false;
+        Debug.Log("Destroying");
+        GameManager.OnPlayerDestroyed(this.gameObject);
+    }
+
+    // sound, low volume pop1
+
 }

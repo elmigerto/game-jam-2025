@@ -5,21 +5,18 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
-    public List<AudioClip> floorSounds;
-    public List<AudioClip> glasSounds;
-    public List<AudioClip> bounceSounds;
-    public List<AudioClip> growSounds;
+    public List<AudioClip> floorSounds = new List<AudioClip>();
+    public List<AudioClip> glasSounds = new List<AudioClip>();
+    public List<AudioClip> bounceSounds = new List<AudioClip>();
+    public List<AudioClip> growSounds = new List<AudioClip>();
     public AudioClip spawnSound;
-    public AudioClip playerJumpSound;
-    public AudioClip playerDeadSound;
-    public AudioClip pointSound;
-    public AudioClip player1HitSounds;
-    public AudioClip player1MovementSounds;
-    public List<AudioClip> player1IdleSounds;
-
-    // public AudioClip player2HitSounds;
-    // public AudioClip player2MovementSounds;
-    // public List<AudioClip> player2IdleSounds;
+    public List<AudioClip> playerJumpSounds = new List<AudioClip>();
+    public AudioClip playerMovementSound;
+    public List<AudioClip> playerStartingVoice = new List<AudioClip>();
+    public List<AudioClip> playerDeadVoice = new List<AudioClip>();
+    public List<AudioClip> playerScoreVoice = new List<AudioClip>();
+    public List<AudioClip> playerDamageVoice = new List<AudioClip>();
+    public List<AudioClip> playerIdleVoice = new List<AudioClip>();
     public float soundVolume = 1f; // Public variable to adjust volume
 
 

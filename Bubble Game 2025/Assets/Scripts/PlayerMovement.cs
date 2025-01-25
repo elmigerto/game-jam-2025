@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = false;
                 Thrust(jumpForce);
             }
-            SoundManager.PlaySound(SoundManager.Instance.playerJumpSound);
+            SoundManager.PlaySound(SoundManager.Instance.playerJumpSounds);
         }
     }
 
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnInteract(InputValue value)
     {
         Debug.Log("suicide");
-        SoundManager.PlaySound(SoundManager.Instance.playerDeadSound);
+        SoundManager.PlaySound(SoundManager.Instance.playerDeadVoice);
         Destroy(this.gameObject);
     }
 
@@ -129,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int value)
     {
         Debug.Log($"Damage: {value}");
-        SoundManager.PlaySound(SoundManager.Instance.player1HitSounds);
+        SoundManager.PlaySound(SoundManager.Instance.playerDamageVoice);
 
         lifePoints -= value;
         if (lifePoints <= 0)

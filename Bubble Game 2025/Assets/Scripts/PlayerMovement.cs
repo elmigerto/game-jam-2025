@@ -11,9 +11,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Jump Settings")]
     public float jumpForce = 10f; // Force applied when jumping
-    public float fallMultiplier = 0.5f; // Makes falling slower
+    public float fallMultiplier = 2.5f; // Makes falling slower
     public float lowJumpMultiplier = 2f; // Makes low jumps smoother
-    public bool allowMultipleJumps = true; // Enable or disable multiple jumps
+    public bool allowMultipleJumps = false; // Enable or disable multiple jumps
 
     [Header("Descent Settings")]
     public float descentForce = 10f; // Force applied when descending
@@ -42,6 +42,12 @@ public class PlayerMovement : MonoBehaviour
     {
         var vector = value.Get<Vector2>();
         movement = new Vector3(vector.x, 0, vector.y);
+
+        // Orient the player to face the movement direction
+        if (movement != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(movement);
+        }
     }
 
     public void OnJump(InputValue value)
@@ -57,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnCrouch(InputValue value)
+    public void OnDescent(InputValue value)
     {
         if (value.isPressed && !isGrounded)
         {
@@ -92,8 +98,16 @@ public class PlayerMovement : MonoBehaviour
             Vector3 velocity = movement * moveSpeed;
             velocity.y = rb.linearVelocity.y; // Maintain current vertical velocity
             rb.linearVelocity = velocity;
-            //SoundManager.PlaySound(SoundManager.Instance.player1MovementSounds);
 
+            // Adjust falling and jumping behavior
+            if (rb.linearVelocity.y < 0) // Falling
+            {
+                rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+            }
+            else if (rb.linearVelocity.y > 0 && !Input.GetKey(KeyCode.Space)) // Low jump
+            {
+                rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+            }
         }
     }
 
@@ -116,8 +130,6 @@ public class PlayerMovement : MonoBehaviour
         {
             touchedPlayer.gameObject.GetComponent<Rigidbody>()
                 .AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
-            SoundManager.PlaySound(SoundManager.Instance.bounceSounds);
-
         }
     }
 
@@ -137,14 +149,4 @@ public class PlayerMovement : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    public void onDrestroy()
-    {
-        isGrounded = false;
-        Debug.Log("Destroying");
-        GameManager.OnPlayerDestroyed(this.gameObject);
-    }
-
-    // sound, low volume pop1
-
 }

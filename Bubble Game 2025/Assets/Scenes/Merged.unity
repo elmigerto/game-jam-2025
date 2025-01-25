@@ -443,7 +443,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: musicVolume
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: scoreTMPText

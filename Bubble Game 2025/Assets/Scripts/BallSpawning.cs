@@ -10,6 +10,12 @@ public class BallSpawning : MonoBehaviour
     public int forceVertical = 2;
     private float timer = 0f;  // Tracks elapsed time
 
+
+    public void Awake()
+    {
+        timer = interval - 1;
+    }
+
     // Update is called once per frame
     void Update()
     {

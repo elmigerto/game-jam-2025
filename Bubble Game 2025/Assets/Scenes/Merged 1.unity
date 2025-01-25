@@ -351,7 +351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BallPrefab: {fileID: 695892264353568037, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
-  spawnSound: {fileID: 0}
+  spawnSound: {fileID: 8300000, guid: 61bfb8afcae9343c4acca39e1414a66c, type: 3}
+  soundVolume: 1
   interval: 3
   forceHoricontal: 4
   forceVertical: 2

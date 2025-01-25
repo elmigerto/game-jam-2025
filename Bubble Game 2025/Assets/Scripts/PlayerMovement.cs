@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f; // Speed of the player
-    public float speedMultiplier = 1f; // Multiplier to adjust speed dynamically
 
     [Header("Jump Settings")]
     public float jumpForce = 50f; // Force applied when jumping
@@ -14,15 +13,18 @@ public class PlayerMovement : MonoBehaviour
     [Header("Bounce Settings")]
     public float bounceForce = 20;
 
-    public float bounceRadius = 20;
+    public float bounceRadius = 5;
 
     private Rigidbody rb;
     private PlayerInput playerInput;
     private Vector3 movement;
     private bool isGrounded = true; // Check if the player is on the ground
 
+    private int lifePoints;
+
     void Awake()
     {
+        lifePoints = 3;
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
     }
@@ -32,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
     {
         var vector = value.Get<Vector2>();
         movement = new Vector3(vector.x, 0, vector.y);
-        // Debug.Log($"Move Input: {movement}");
     }
 
     public void OnJump(InputValue value)
@@ -72,22 +73,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // void Jump()
-    // {
-    //     if (rb != null)
-    //     {
-    //         rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
-    //         isGrounded = false; // Set grounded to false when jumping
-    //     }
-    // }
-
-
     void FixedUpdate()
     {
         // Apply movement to the Rigidbody
         if (rb != null)
         {
-            Vector3 velocity = movement * moveSpeed * speedMultiplier;
+            Vector3 velocity = movement * moveSpeed;
             velocity.y = rb.linearVelocity.y; // Maintain current vertical velocity
             rb.linearVelocity = velocity;
         }
@@ -109,5 +100,26 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("You dead");
 
         }
+
+        // collision with a other player
+        var touchedplayer = collision.gameObject.GetComponent<PlayerMovement>();
+        if (touchedplayer != null)
+        {
+            touchedplayer.gameObject.GetComponent<Rigidbody>().AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
+            Debug.Log("You touched player");
+
+        }
+    }
+
+    public void TakeDamage(int value){
+        Debug.Log($"Damage: {value}");
+        lifePoints -= value;
+        if(lifePoints <= 0){
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void onDrestroy(){
+        Debug.Log("Destroying");
     }
 }

@@ -111,6 +111,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
+    internal static void OnPlayerDestroyed(GameObject gameObject)
+    {
+        Debug.Log("A player has died!!");
+    }
 }

@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 movement;
     private bool isGrounded = true; // Check if the player is on the ground
 
-    private int lifePoints;
     private float originalMass;
 
     [Header("Sound Settings")]

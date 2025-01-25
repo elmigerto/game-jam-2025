@@ -29,12 +29,12 @@ public class SoundManager : MonoBehaviour
     public List<AudioClipPlayer> playerIdleVoice = new List<AudioClipPlayer>();
 
 
-  //  public List<AudioClip> playerJumpSounds = new List<AudioClip>();
-  //  public List<AudioClip> playerStartingVoice = new List<AudioClip>();
-  //  public List<AudioClip> playerDeadVoice = new List<AudioClip>();
-  //  public List<AudioClip> playerScoreVoice = new List<AudioClip>();
- //   public List<AudioClip> playerDamageVoice = new List<AudioClip>();
-//    public List<AudioClip> playerIdleVoice = new List<AudioClip>();
+    //  public List<AudioClip> playerJumpSounds = new List<AudioClip>();
+    //  public List<AudioClip> playerStartingVoice = new List<AudioClip>();
+    //  public List<AudioClip> playerDeadVoice = new List<AudioClip>();
+    //  public List<AudioClip> playerScoreVoice = new List<AudioClip>();
+    //   public List<AudioClip> playerDamageVoice = new List<AudioClip>();
+    //    public List<AudioClip> playerIdleVoice = new List<AudioClip>();
     public float soundVolume = 1f; // Public variable to adjust volume
 
 
@@ -54,12 +54,12 @@ public class SoundManager : MonoBehaviour
     {
         if (sound != null && Instance.audioSource != null)
         {
-            
+
             Instance.audioSource.PlayOneShot(sound);
         }
     }
 
-    public static void PlaySound(IList<AudioClip> sounds)
+    public static void PlaySoundOfList(IList<AudioClip> sounds)
     {
         if (sounds != null && sounds.Count > 0)
         {

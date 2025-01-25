@@ -7,7 +7,8 @@ public class BallSpawning : MonoBehaviour
 
     private System.Random rnd = new System.Random();
     public float interval = 2f; // Time interval in seconds
-    public int force = 4;
+    public int forceHoricontal = 4;
+    public int forceVertical = 2;
 
     private float timer = 0f;  // Tracks elapsed time
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -40,9 +41,9 @@ public class BallSpawning : MonoBehaviour
     private void InstantiateBall()
     {
         var currentBall = Instantiate(BallPrefab, this.transform.position + new Vector3(0, 2, 0), new Quaternion());
-        var vX = rnd.Next(-force,force);
-        var vY = 3;
-        var vZ = rnd.Next(-force,force);
+        var vX = rnd.Next(-forceHoricontal,forceHoricontal);
+        var vY = forceVertical;
+        var vZ = rnd.Next(-forceHoricontal,forceHoricontal);
         currentBall.GetComponent<Rigidbody>().linearVelocity = new Vector3(vX, vY, vZ);//.AddForce(new Vector3(1.2f,10.5f,5.6f));//.transform.v    }
     }
     }

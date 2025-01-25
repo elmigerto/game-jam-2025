@@ -29,12 +29,12 @@ public class SoundManager : MonoBehaviour
     public List<AudioClipPlayer> playerIdleVoice = new List<AudioClipPlayer>();
 
 
-  //  public List<AudioClip> playerJumpSounds = new List<AudioClip>();
-  //  public List<AudioClip> playerStartingVoice = new List<AudioClip>();
-  //  public List<AudioClip> playerDeadVoice = new List<AudioClip>();
-  //  public List<AudioClip> playerScoreVoice = new List<AudioClip>();
- //   public List<AudioClip> playerDamageVoice = new List<AudioClip>();
-//    public List<AudioClip> playerIdleVoice = new List<AudioClip>();
+    //  public List<AudioClip> playerJumpSounds = new List<AudioClip>();
+    //  public List<AudioClip> playerStartingVoice = new List<AudioClip>();
+    //  public List<AudioClip> playerDeadVoice = new List<AudioClip>();
+    //  public List<AudioClip> playerScoreVoice = new List<AudioClip>();
+    //   public List<AudioClip> playerDamageVoice = new List<AudioClip>();
+    //    public List<AudioClip> playerIdleVoice = new List<AudioClip>();
     public float soundVolume = 1f; // Public variable to adjust volume
 
 
@@ -54,12 +54,12 @@ public class SoundManager : MonoBehaviour
     {
         if (sound != null && Instance.audioSource != null)
         {
-            
+
             Instance.audioSource.PlayOneShot(sound);
         }
     }
 
-    public static void PlaySound(List<AudioClip> sounds)
+    public static void PlaySound(IList<AudioClip> sounds)
     {
         if (sounds != null && sounds.Count > 0)
         {
@@ -74,8 +74,9 @@ public class SoundManager : MonoBehaviour
         if (playerSounds != null && playerSounds.Count > 0)
         {
             var playerNumber = Mathf.Min(player, playerSounds.Count - 1);
-            var playerSound = playerSounds[playerNumber].clips;
-            PlaySound(playerSound);
+            var sounds = playerSounds[playerNumber].clips;
+            sounds = sounds.Count > 0 ? sounds : playerSounds[0].clips;
+            PlaySound(sounds);
         }
     }
 }

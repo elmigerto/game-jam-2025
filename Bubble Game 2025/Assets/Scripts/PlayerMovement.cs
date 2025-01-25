@@ -189,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Random.Range(1, 10) > 2)
         {
-            SoundManager.PlayPlayerSound(SoundManager.Instance.playerIdleVoice);
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerIdleVoice,playerSoundNumber);
         }
     }
 

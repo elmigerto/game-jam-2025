@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     public AudioClip backgroundMusic; // Assign your background music in the Inspector
     public float musicVolume = 0.5f; // Volume level for background music
 
+    public int playerOneSoundProfile = 0;
+    public int playerTwoSoundProfile = 1;
+
     private AudioSource audioSource;
 
     void Awake()
@@ -64,7 +67,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = spawnPoint.position;
         player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         AssignModel(player);
-        SoundManager.PlayPlayerSound(SoundManager.Instance.playerStartingVoice);
+        SoundManager.PlayPlayerSound(SoundManager.Instance.playerStartingVoice, playerOneSoundProfile);
 
 
         playerCount++;
@@ -86,11 +89,15 @@ public class GameManager : MonoBehaviour
         {
             player1Model.gameObject.SetActive(true);
             player2Model.gameObject.SetActive(false);
+            this.playerOneSoundProfile = UnityEngine.Random.Range(0, 3);
+            player2Model.gameObject.GetComponent<PlayerMovement>().playerSoundNumber = this.playerOneSoundProfile;
         }
         else // Odd player index: Show Player2
         {
             player1Model.gameObject.SetActive(false);
             player2Model.gameObject.SetActive(true);
+            this.playerTwoSoundProfile = UnityEngine.Random.Range(0, 3);
+            player2Model.gameObject.GetComponent<PlayerMovement>().playerSoundNumber = this.playerTwoSoundProfile;
         }
 
         Debug.Log($"Assigned model for Player {player.playerIndex}");
@@ -104,6 +111,8 @@ public class GameManager : MonoBehaviour
         Level = 1;
         GameTime = 0f;
         IsGameRunning = true;
+        this.playerTwoSoundProfile = UnityEngine.Random.Range(0, 3);
+        this.playerOneSoundProfile = UnityEngine.Random.Range(0, 3);
     }
 
     // Adds to the player's score

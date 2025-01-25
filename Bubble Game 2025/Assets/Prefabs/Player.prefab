@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  jumpForce: 50
+  jumpForce: 15
   bounceForce: 200
   bounceRadius: 20
 --- !u!114 &7358296814538922379

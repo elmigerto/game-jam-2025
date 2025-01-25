@@ -374,7 +374,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2196279369219581422, guid: 3789f8788e82842e68ade5344ddc294d, type: 3}
       propertyPath: rotationSpeed
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8374616010321449792, guid: 3789f8788e82842e68ade5344ddc294d, type: 3}
       propertyPath: m_Name
@@ -441,6 +441,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
+      propertyPath: timeScaleFactor
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: scoreTMPText
       value: 

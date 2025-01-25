@@ -1,4 +1,6 @@
 using System;
+using System.Threading.Tasks;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,11 +23,14 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = true; // Check if the player is on the ground
 
     private int lifePoints;
+    private float orginialMass;
+    private float massMuliplier = 5;
 
     void Awake()
     {
         lifePoints = 3;
         rb = GetComponent<Rigidbody>();
+        orginialMass = rb.mass;
         playerInput = GetComponent<PlayerInput>();
     }
 
@@ -71,8 +76,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rb != null)
         {
-            rb.linearVelocity += (Vector3.up * force);//, ForceMode.Impulse);
-            // rb.AddRelativeForce
+            rb.linearVelocity = Vector3.up * force;
         }
     }
 
@@ -81,14 +85,10 @@ public class PlayerMovement : MonoBehaviour
         // Apply movement to the Rigidbody
         if (rb != null)
         {
-            if (rb.linearVelocity.y > 0.1f)
-                rb.mass = 5f; // Slows fall
-            else
-                rb.mass = 100f; // Normal jump physics
-
             Vector3 velocity = movement * moveSpeed;
             velocity.y = rb.linearVelocity.y; // Maintain current vertical velocity
             rb.linearVelocity = velocity;
+            rb.mass = !isGrounded ? orginialMass : orginialMass * massMuliplier;
         }
     }
 
@@ -119,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
+        this.isGrounded = false;
         Debug.Log("Exit");
     }
 

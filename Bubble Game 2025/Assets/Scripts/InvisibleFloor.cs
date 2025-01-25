@@ -8,8 +8,10 @@ public class InvisibleFloor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Touched floor");
         if (other.CompareTag(playerTag))
         {
+            Debug.Log("Player Touched floor - killed");
             other.gameObject.CompareTag(playerTag);
             Destroy(other.gameObject);
            }

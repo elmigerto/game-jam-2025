@@ -11,12 +11,10 @@ GameObject:
   - component: {fileID: 7840945068403090313}
   - component: {fileID: 7644133849520590566}
   - component: {fileID: 3855155799636244180}
-  - component: {fileID: 8545359841327879754}
   - component: {fileID: 3140548775372228488}
   - component: {fileID: 341572377413147231}
-  - component: {fileID: 4790325420499261255}
   m_Layer: 0
-  m_Name: Ball
+  m_Name: SeedBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,27 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8545359841327879754
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695892264353568037}
-  m_Material: {fileID: 13400000, guid: d1f9ef40cf48241d28a95fd2f518e9d4, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3140548775372228488
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -159,15 +136,3 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4790325420499261255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695892264353568037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24fb443194bd68ca098558b66fff8085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

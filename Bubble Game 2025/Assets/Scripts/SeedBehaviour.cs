@@ -2,15 +2,25 @@ using UnityEngine;
 
 public class SeedBehaviour : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public int despawnCount = 3;
+    public GameObject arena;
+
+    void OnCollisionEnter(Collision collision)
     {
-        
+        // collision with a other player
+        if (collision.gameObject == arena)
+        {
+            despawnCount -= 1;
+            if (despawnCount == 0)
+            {
+                BecomePlant();
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void BecomePlant()
     {
-        
+        Debug.Log("Im a plant now");
     }
 }
+

@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,13 +31,16 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
     private Vector3 movement;
     private bool isGrounded = true; // Check if the player is on the ground
-
+    private float timer;
+    private bool isRunning;
 
     void Awake()
     {
         lifePoints = 3;
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
+        StartCoroutine(RepeatAction(3, CheckIdle));
+        StartCoroutine(RepeatAction(3, PlayMovementSound));
     }
 
     void OnMove(InputValue value)
@@ -113,6 +119,17 @@ public class PlayerMovement : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(movement);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
             }
+
+            // Increment timer by the time elapsed since the last frame
+            timer += Time.deltaTime;
+
+            // Check if the timer has reached or exceeded the interval
+            if (timer >= Random.Range(3, 7))
+            {
+                SoundManager.PlaySound(SoundManager.Instance.playerIdleVoice);
+
+            }
+
         }
     }
 
@@ -155,5 +172,29 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+
+    IEnumerator RepeatAction(float interval, System.Action action)
+    {
+        while (true)
+        {
+            action?.Invoke(); // Call the method
+            yield return new WaitForSeconds(interval); // Wait before next call
+        }
+    }
+
+    void CheckIdle()
+    {
+        if (Random.Range(1, 10) > 2)
+        {
+            SoundManager.PlaySound(SoundManager.Instance.playerIdleVoice);
+        }
+    }
+
+    void PlayMovementSound()
+    {
+        SoundManager.PlaySound(SoundManager.Instance.playerMovementSound);
+
     }
 }

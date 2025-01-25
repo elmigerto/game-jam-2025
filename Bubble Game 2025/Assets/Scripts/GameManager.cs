@@ -5,13 +5,19 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    
-    [Range(0,1)]
+
+    [Range(0, 1)]
     public float timeScaleFactor = 0.3f;
     public Transform[] spawnPoints;  // Assign spawn points in Inspector
     public Material[] playerMaterials;  // Assign spawn points in Inspector
     private int playerCount = 0;
 
+    // Global game variables
+    public int Score { get; private set; }
+    public int Level { get; private set; }
+    public float GameTime { get; private set; } // Tracks the total game time in seconds
+
+    public bool IsGameRunning { get; private set; }
 
     void Awake()
     {
@@ -20,13 +26,21 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-     Time.timeScale = timeScaleFactor;
+        Time.timeScale = timeScaleFactor;
     }
-    
+
+    void Update()
+    {
+        if (IsGameRunning)
+        {
+            GameTime += Time.deltaTime;
+        }
+    }
+
     public void OnPlayerJoined(PlayerInput player)
     {
         Debug.Log($"Player {player.playerIndex} joined!");
-        
+
         Transform spawnPoint = spawnPoints[playerCount % spawnPoints.Length]; // Cycle through spawn points
         player.transform.position = spawnPoint.position;
         player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
@@ -35,7 +49,7 @@ public class GameManager : MonoBehaviour
         playerCount++;
     }
 
-     private void AssignMaterial(PlayerInput player)
+    private void AssignMaterial(PlayerInput player)
     {
         Renderer playerRenderer = player.GetComponentInChildren<Renderer>(); // Find player’s renderer
         if (playerRenderer != null && playerMaterials.Length > 0)
@@ -49,5 +63,32 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("No Renderer found on player or materials list is empty!");
         }
+    }
+
+    // Resets all game variables
+    public void ResetGame()
+    {
+        Score = 0;
+        Level = 1;
+        GameTime = 0f;
+        IsGameRunning = true;
+    }
+
+    // Adds to the player's score
+    public void AddScore(int points)
+    {
+        Score += points;
+    }
+
+    // Advances to the next level
+    public void NextLevel()
+    {
+        Level++;
+    }
+
+    // Stops the game
+    public void StopGame()
+    {
+        IsGameRunning = false;
     }
 }

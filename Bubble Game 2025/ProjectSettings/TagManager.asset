@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SphereWorld
   - Seed
+  - Floor
   layers:
   - Default
   - TransparentFX

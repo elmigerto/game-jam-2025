@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddada7baa5e7a7e3b323095b3019192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScaleFactor: 0.3
   spawnPoints:
   - {fileID: 2129558219}
   - {fileID: 1542433627}
@@ -454,7 +455,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 18, y: 0.1, z: 18}
+  m_LocalScale: {x: 16, y: 0.1, z: 16}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -683,7 +684,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BallPrefab: {fileID: 695892264353568037, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
   interval: 2
-  force: 8
+  forceHoricontal: 4
+  forceVertical: 2
 --- !u!136 &1929971830
 CapsuleCollider:
   m_ObjectHideFlags: 0

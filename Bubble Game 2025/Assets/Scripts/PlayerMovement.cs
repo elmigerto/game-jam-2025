@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,17 +31,20 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInput playerInput;
     private Vector3 movement;
     private bool isGrounded = true; // Check if the player is on the ground
-
-    private float originalMass;
+    private float timer;
+    private bool isRunning;
 
     [Header("Sound Settings")]
     public int playerSoundNumber = 0;
+    private bool isMoving;
 
     void Awake()
     {
         lifePoints = 3;
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
+        StartCoroutine(RepeatAction(3, CheckIdle));
+        StartCoroutine(RepeatAction(0.5f, PlayMovementSound));
     }
 
     void OnMove(InputValue value)
@@ -117,6 +123,9 @@ public class PlayerMovement : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(movement);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
             }
+
+            // Increment timer by the time elapsed since the last frame
+            timer += Time.deltaTime;
         }
     }
 
@@ -159,5 +168,33 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+
+    IEnumerator RepeatAction(float interval, System.Action action)
+    {
+        while (true)
+        {
+            action?.Invoke(); // Call the method
+            yield return new WaitForSeconds(interval); // Wait before next call
+        }
+    }
+
+    void CheckIdle()
+    {
+        if (Random.Range(1, 10) > 2)
+        {
+            SoundManager.PlaySound(SoundManager.Instance.playerIdleVoice);
+        }
+    }
+
+    void PlayMovementSound()
+    {
+        if (isMoving)
+        {
+
+            SoundManager.PlaySound(SoundManager.Instance.playerMovementSound);
+        }
+
     }
 }

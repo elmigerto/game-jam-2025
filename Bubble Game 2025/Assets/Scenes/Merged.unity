@@ -360,13 +360,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392413711}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40569267, y: -0.024673529, z: 0.010956498, w: 0.9136108}
-  m_LocalPosition: {x: 2.4171562, y: 11.17641, z: -11.655384}
+  m_LocalRotation: {x: 0.3078781, y: -0.025684452, z: 0.008314858, w: 0.9510428}
+  m_LocalPosition: {x: 2.84, y: 14.89, z: -19.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 34.077, y: 17.847, z: 6.614}
+  m_LocalEulerAnglesHint: {x: 35.876, y: -3.094, z: 0}
 --- !u!1001 &649504235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -654,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5083165291200333270, guid: bafd45841350c55bb8c7a78ef548ec61, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5951251186852394109, guid: bafd45841350c55bb8c7a78ef548ec61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1110,6 +1110,74 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerMovementSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cc798c409fb3c4228a2f9e7a8d89cc0e, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerDeadVoice.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerIdleVoice.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerJumpSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerScoreVoice.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerDamageVoice.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDeadVoice.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 3ca604d7afb2e7daea805026fb7fd9c0, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerIdleVoice.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 29dd56392e3be964298642a537b35792, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerIdleVoice.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a675af951c4b82536b993026727480fc, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerJumpSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 52f9cb74454e3fd39a86d1ff688ee2e5, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerScoreVoice.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ecc72c6de7f0c7937a9d57048e13e053, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerScoreVoice.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b8f1fe0f719f13927b7a567c24f40a38, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerStartingVoice.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDamageVoice.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7feee5ff65148c5f78c333bdd1e9bc21, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDamageVoice.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8728d4fd2b2aeac5bb4dde8b1af90086, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerStartingVoice.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2940b284b71a54ff9ac4bb9f60e4b99a, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerStartingVoice.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: c649fa1e588d4066582ccc626c66427c, type: 3}
     - target: {fileID: 4463247794121928791, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
       propertyPath: m_Name
       value: SoundManager

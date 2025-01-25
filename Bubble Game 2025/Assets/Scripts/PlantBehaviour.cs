@@ -16,7 +16,7 @@ public class PlantBehaviour : MonoBehaviour
         var touchedplayer = collision.gameObject.GetComponent<PlayerMovement>();
         if (touchedplayer != null)
         {
-            touchedplayer.SendMessage("TakeDamage", damagevalue);//.gameObject.GetComponent<Rigidbody>().AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
+            touchedplayer.SendMessage("TakeDamage",  collision);//.gameObject.GetComponent<Rigidbody>().AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
             Debug.Log("TakeDamage sent");
         }
     }

@@ -21,20 +21,19 @@ public class PlayerMovement : MonoBehaviour
     [Header("Bounce Settings")]
     public float bounceForce = 20f;
     public float bounceRadius = 5f;
+    public float damageForce = 40f;
+    public int lifePoints;
 
     private Rigidbody rb;
     private PlayerInput playerInput;
     private Vector3 movement;
     private bool isGrounded = true; // Check if the player is on the ground
 
-    private int lifePoints;
-    private float originalMass;
 
     void Awake()
     {
         lifePoints = 3;
         rb = GetComponent<Rigidbody>();
-        originalMass = rb.mass;
         playerInput = GetComponent<PlayerInput>();
     }
 
@@ -63,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnDescent(InputValue value)
+    public void OnCrouch(InputValue value)
     {
         if (value.isPressed && !isGrounded)
         {
@@ -144,12 +143,14 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = false;
     }
 
-    public void TakeDamage(int value)
+    public void TakeDamage(Collision collision)
     {
-        Debug.Log($"Damage: {value}");
+        // Debug.Log($"Damage: {value}");
         SoundManager.PlaySound(SoundManager.Instance.playerDamageVoice);
-
-        lifePoints -= value;
+        rb.linearVelocity = Vector3.zero;
+        var direction = (collision.contacts[0].impulse + Vector3.up) * damageForce; // opposit direction
+        rb.AddForce(direction, ForceMode.Impulse);
+        lifePoints -= 1;
         if (lifePoints <= 0)
         {
             Destroy(this.gameObject);

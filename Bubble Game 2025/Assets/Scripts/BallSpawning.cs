@@ -4,6 +4,7 @@ using UnityEngine;
 public class BallSpawning : MonoBehaviour
 {
     public GameObject BallPrefab;
+    public AudioClip spawnSound;
 
     private System.Random rnd = new System.Random();
     public float interval = 2f; // Time interval in seconds
@@ -11,11 +12,12 @@ public class BallSpawning : MonoBehaviour
     public int forceVertical = 2;
 
     private float timer = 0f;  // Tracks elapsed time
+    private AudioSource audioSource;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,15 +37,24 @@ public class BallSpawning : MonoBehaviour
         {
             InstantiateBall();
         }
-
     }
 
     private void InstantiateBall()
     {
         var currentBall = Instantiate(BallPrefab, this.transform.position + new Vector3(0, 2, 0), new Quaternion());
-        var vX = rnd.Next(-forceHoricontal,forceHoricontal);
+        var vX = rnd.Next(-forceHoricontal, forceHoricontal);
         var vY = forceVertical;
-        var vZ = rnd.Next(-forceHoricontal,forceHoricontal);
-        currentBall.GetComponent<Rigidbody>().linearVelocity = new Vector3(vX, vY, vZ);//.AddForce(new Vector3(1.2f,10.5f,5.6f));//.transform.v    }
+        var vZ = rnd.Next(-forceHoricontal, forceHoricontal);
+        currentBall.GetComponent<Rigidbody>().linearVelocity = new Vector3(vX, vY, vZ);
+
+        PlaySpawnSound();
     }
+
+    private void PlaySpawnSound()
+    {
+        if (spawnSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(spawnSound);
+        }
     }
+}

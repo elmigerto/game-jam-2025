@@ -63,26 +63,37 @@ public class GameManager : MonoBehaviour
         Transform spawnPoint = spawnPoints[playerCount % spawnPoints.Length]; // Cycle through spawn points
         player.transform.position = spawnPoint.position;
         player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
-        //AssignMaterial(player);
+        AssignModel(player);
 
         playerCount++;
     }
 
-    private void AssignMaterial(PlayerInput player)
+    private void AssignModel(PlayerInput player)
     {
-        Renderer playerRenderer = player.GetComponentInChildren<Renderer>(); // Find player’s renderer
-        if (playerRenderer != null && playerMaterials.Length > 0)
-        {
-            int materialIndex = playerCount % playerMaterials.Length; // Cycle through materials
-            playerRenderer.material = playerMaterials[materialIndex];
+        Transform player1Model = player.transform.Find("Player1");
+        Transform player2Model = player.transform.Find("Player2");
 
-            Debug.Log($"Assigned Material {playerMaterials[materialIndex].name} to Player {player.playerIndex}");
-        }
-        else
+        if (player1Model == null || player2Model == null)
         {
-            Debug.LogWarning("No Renderer found on player or materials list is empty!");
+            Debug.LogWarning("Player models are missing! Ensure Player1 and Player2 are children of the prefab.");
+            return;
         }
+
+        // Use the player index to determine which model to activate
+        if (player.playerIndex % 2 == 0) // Even player index: Show Player1
+        {
+            player1Model.gameObject.SetActive(true);
+            player2Model.gameObject.SetActive(false);
+        }
+        else // Odd player index: Show Player2
+        {
+            player1Model.gameObject.SetActive(false);
+            player2Model.gameObject.SetActive(true);
+        }
+
+        Debug.Log($"Assigned model for Player {player.playerIndex}");
     }
+
 
     // Resets all game variables
     public void ResetGame()

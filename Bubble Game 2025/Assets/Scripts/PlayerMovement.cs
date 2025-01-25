@@ -34,13 +34,17 @@ public class PlayerMovement : MonoBehaviour
     private float timer;
     private bool isRunning;
 
+    [Header("Sound Settings")]
+    public int playerSoundNumber = 0;
+    private bool isMoving;
+
     void Awake()
     {
         lifePoints = 3;
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
         StartCoroutine(RepeatAction(3, CheckIdle));
-        StartCoroutine(RepeatAction(3, PlayMovementSound));
+        StartCoroutine(RepeatAction(0.5f, PlayMovementSound));
     }
 
     void OnMove(InputValue value)
@@ -64,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = false;
                 Thrust(jumpForce);
             }
-            SoundManager.PlaySound(SoundManager.Instance.playerJumpSounds);
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerJumpSounds);
         }
     }
 
@@ -83,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnInteract(InputValue value)
     {
         Debug.Log("suicide");
-        SoundManager.PlaySound(SoundManager.Instance.playerDeadVoice);
+        SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice);
         Destroy(this.gameObject);
     }
 
@@ -122,14 +126,6 @@ public class PlayerMovement : MonoBehaviour
 
             // Increment timer by the time elapsed since the last frame
             timer += Time.deltaTime;
-
-            // Check if the timer has reached or exceeded the interval
-            if (timer >= Random.Range(3, 7))
-            {
-                SoundManager.PlaySound(SoundManager.Instance.playerIdleVoice);
-
-            }
-
         }
     }
 
@@ -163,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(Collision collision)
     {
         // Debug.Log($"Damage: {value}");
-        SoundManager.PlaySound(SoundManager.Instance.playerDamageVoice);
+        SoundManager.PlayPlayerSound(SoundManager.Instance.playerDamageVoice);
         rb.linearVelocity = Vector3.zero;
         var direction = (collision.contacts[0].impulse + Vector3.up) * damageForce; // opposit direction
         rb.AddForce(direction, ForceMode.Impulse);
@@ -194,7 +190,10 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayMovementSound()
     {
+        if(isMoving){
+            
         SoundManager.PlaySound(SoundManager.Instance.playerMovementSound);
+        }
 
     }
 }

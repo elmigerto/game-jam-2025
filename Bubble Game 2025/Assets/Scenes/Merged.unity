@@ -1178,6 +1178,174 @@ PrefabInstance:
       propertyPath: 'playerStartingVoice.Array.data[1]'
       value: 
       objectReference: {fileID: 8300000, guid: c649fa1e588d4066582ccc626c66427c, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerDeadVoice.Array.data[0].playerNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerIdleVoice.Array.data[0].playerNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerJumpSounds.Array.data[0].playerNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerScoreVoice.Array.data[0].playerNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerDeadVoice.Array.data[0].clips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerIdleVoice.Array.data[0].clips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerStartingVoice.Array.data[0].playerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerStartingVoice.Array.data[1].playerNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerJumpSounds.Array.data[0].clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerScoreVoice.Array.data[0].clips.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerDamageVoice.Array.data[0].clips.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDeadVoice.Array.data[0].clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a16318949af446e8ae7c7bae6c110ea, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDeadVoice.Array.data[0].clips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6eb36d7d42d5b4c2faacec9a5225d417, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDeadVoice.Array.data[0].clips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bdce24638e1a4924b915f0f27bb41cc, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDeadVoice.Array.data[0].clips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bdce24638e1a4924b915f0f27bb41cc, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDeadVoice.Array.data[0].clips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bdce24638e1a4924b915f0f27bb41cc, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerIdleVoice.Array.data[0].clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bdce24638e1a4924b915f0f27bb41cc, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerIdleVoice.Array.data[0].clips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: eb243f800b11d4f72849df89dced0196, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerIdleVoice.Array.data[0].clips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: fcb773ecd30594996958ab16b0e5d2be, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerIdleVoice.Array.data[0].clips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: faeef190b156b45ce95d184c308e2df2, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerIdleVoice.Array.data[0].clips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: fc6eb35ab076b497d9570e869fb10562, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerJumpSounds.Array.data[0].clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: fc6eb35ab076b497d9570e869fb10562, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerScoreVoice.Array.data[0].clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b824b5949e124288a617396822e2813, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerScoreVoice.Array.data[0].clips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7fd85e9c7b7f34e5c9d4db810b672af5, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerScoreVoice.Array.data[0].clips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e35b346831fb3473c8a55d5a580b5f15, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerScoreVoice.Array.data[0].clips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 4defb1133cf844ec18b98f8785d2980a, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerScoreVoice.Array.data[0].clips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 27d6dbd9636024b69a1eede6e94f76fc, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerScoreVoice.Array.data[0].clips.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ac685f1fd4d7e468a8657eebc6939312, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerScoreVoice.Array.data[0].clips.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 479bd052754e645d8b915d49c0439ec5, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerScoreVoice.Array.data[0].clips.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ddabb9ca98f0c443a8dee775574688a8, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: playerStartingVoice.Array.data[1].clips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDamageVoice.Array.data[0].clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: c485627920b4d439286d800cab763094, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDamageVoice.Array.data[0].clips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: c61833f37ca57468f98af2e9a8a00e0b, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDamageVoice.Array.data[0].clips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8fa70226caaa54960b4929b8d0df1251, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDamageVoice.Array.data[0].clips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 1e6374a489c344ae9a1634e347c013a4, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDamageVoice.Array.data[0].clips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ca6e8f3ef3fa147e8beb9e5fe45bdb3b, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerDamageVoice.Array.data[0].clips.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 92fb46c8f96e84bdcbfb84fe39f11496, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerStartingVoice.Array.data[1].clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: c0c2520397f6947969d6ce095545d536, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerStartingVoice.Array.data[1].clips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: fbfe640b8f84b42329cca8996e4f1035, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerStartingVoice.Array.data[1].clips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f8bae45002c24b7688309de4ef91c5d, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerStartingVoice.Array.data[1].clips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f6a137f51823441ba8ddf594324e3813, type: 3}
+    - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
+      propertyPath: 'playerStartingVoice.Array.data[1].clips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 189f8dacc24b64be1a2f75b9a4c01f21, type: 3}
     - target: {fileID: 4463247794121928791, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
       propertyPath: m_Name
       value: SoundManager

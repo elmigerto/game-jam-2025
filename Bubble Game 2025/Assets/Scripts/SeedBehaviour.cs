@@ -8,6 +8,9 @@ public class SeedBehaviour : MonoBehaviour
     public GameObject plantBody;
     public float bounceForce = 30;
 
+    public string targetTag = "SphereWorld"; // Tag of the objects that will trigger score increment
+    public int scoreValue = 10; // Points to add when collision happens
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == arena.name)
@@ -17,12 +20,27 @@ public class SeedBehaviour : MonoBehaviour
             if (despawnCount == 0)
             {
                 BecomePlant();
-            }else{
+            }
+            else
+            {
                 BounceFromGround();
             }
         }
-        else{
+        else
+        {
             // Debug.Log("hit that" + collision.gameObject.name);
+        }
+
+        // Check if the collided object has the target tag
+        if (collision.gameObject.CompareTag(targetTag))
+        {
+            // Increase the score using the GameManager
+            GameManager.Instance?.AddScore(scoreValue);
+
+            // Optional: Destroy the object after collision
+            // Destroy(collision.gameObject);
+
+            Debug.Log($"Collision with {targetTag}! Score increased by {scoreValue}.");
         }
     }
 
@@ -37,6 +55,24 @@ public class SeedBehaviour : MonoBehaviour
         plantBody.transform.position = gameObject.transform.position;
         plantBody.SetActive(true);
         Debug.Log("Im a plant now");
+    }
+
+
+
+
+    private void OnCollisionExit(Collision collision)
+    {
+        // Check if the collided object has the target tag
+        if (collision.gameObject.CompareTag(targetTag))
+        {
+            // Increase the score using the GameManager
+            GameManager.Instance?.AddScore(scoreValue);
+
+            // Optional: Destroy the object after collision
+            // Destroy(collision.gameObject);
+
+            Debug.Log($"Collision with {targetTag}! Score increased by {scoreValue}.");
+        }
     }
 }
 

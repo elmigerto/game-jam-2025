@@ -1,6 +1,8 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +20,9 @@ public class GameManager : MonoBehaviour
     public float GameTime { get; private set; } // Tracks the total game time in seconds
 
     public bool IsGameRunning { get; private set; }
+
+    public Text scoreText; // Legacy UI
+    public TextMeshProUGUI scoreTMPText; // For TextMeshPro
 
     void Awake()
     {
@@ -78,6 +83,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points)
     {
         Score += points;
+        UpdateScoreUI();
     }
 
     // Advances to the next level
@@ -91,4 +97,20 @@ public class GameManager : MonoBehaviour
     {
         IsGameRunning = false;
     }
+
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = $"Score: {Score}";
+        }
+
+        if (scoreTMPText != null)
+        {
+            scoreTMPText.text = $"Score: {Score}";
+        }
+    }
+
+
+
 }

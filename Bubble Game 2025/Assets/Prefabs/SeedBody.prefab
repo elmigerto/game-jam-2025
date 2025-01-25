@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4750949531299457416}
   m_Layer: 0
   m_Name: SeedBody
-  m_TagString: Untagged
+  m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,3 +153,5 @@ MonoBehaviour:
   arena: {fileID: 4981431373709201979, guid: a1deed58b7d7685f39f6f09c21abbf50, type: 3}
   plantBody: {fileID: 0}
   bounceForce: 130
+  targetTag: SphereWorld
+  scoreValue: 10

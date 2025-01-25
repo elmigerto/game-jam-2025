@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f; // Speed of the player
+    public float speedMultiplier = 1f; // Multiplier to adjust speed dynamically
 
     [Header("Jump Settings")]
     public float jumpForce = 50f; // Force applied when jumping
@@ -86,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         // Apply movement to the Rigidbody
         if (rb != null)
         {
-            Vector3 velocity = movement * moveSpeed;
+            Vector3 velocity = movement * moveSpeed * speedMultiplier;
             velocity.y = rb.linearVelocity.y; // Maintain current vertical velocity
             rb.linearVelocity = velocity;
         }

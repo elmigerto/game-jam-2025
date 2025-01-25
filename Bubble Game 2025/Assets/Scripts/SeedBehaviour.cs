@@ -12,7 +12,7 @@ public class SeedBehaviour : MonoBehaviour
     {
         if (collision.gameObject.name == arena.name)
         {
-            Debug.LogWarning("here");
+            // Debug.LogWarning("here");
             despawnCount -= 1;
             if (despawnCount == 0)
             {
@@ -22,7 +22,7 @@ public class SeedBehaviour : MonoBehaviour
             }
         }
         else{
-            Debug.Log("hit that" + collision.gameObject.name);
+            // Debug.Log("hit that" + collision.gameObject.name);
         }
     }
 

@@ -357,8 +357,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392413711}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40569267, y: -0.024673529, z: 0.010956498, w: 0.9136108}
-  m_LocalPosition: {x: 2.4171562, y: 11.17641, z: -11.655384}
+  m_LocalRotation: {x: -0.000529713, y: -0.90135866, z: 0.43307182, w: -0.0010795295}
+  m_LocalPosition: {x: -1.5113039, y: 21.761206, z: 17.106693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -445,6 +445,10 @@ PrefabInstance:
       propertyPath: scoreTMPText
       value: 
       objectReference: {fileID: 122784502}
+    - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
+      propertyPath: backgroundMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 460f0d2ec08944fa18860956c6a89f9c, type: 3}
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: timeScaleFactor
       value: 0.3

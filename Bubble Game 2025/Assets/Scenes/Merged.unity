@@ -446,6 +446,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 122784502}
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
+      propertyPath: backgroundMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 460f0d2ec08944fa18860956c6a89f9c, type: 3}
+    - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: timeScaleFactor
       value: 0.3
       objectReference: {fileID: 0}

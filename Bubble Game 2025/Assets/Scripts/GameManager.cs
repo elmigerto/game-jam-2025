@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -24,6 +25,12 @@ public class GameManager : MonoBehaviour
     public Text scoreText; // Legacy UI
     public TextMeshProUGUI scoreTMPText; // For TextMeshPro
 
+    [Header("Audio Settings")]
+    public AudioClip backgroundMusic; // Assign your background music in the Inspector
+    public float musicVolume = 0.5f; // Volume level for background music
+
+    private AudioSource audioSource;
+
     void Awake()
     {
         if (Instance == null)
@@ -32,6 +39,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         Time.timeScale = timeScaleFactor;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = backgroundMusic;
+        audioSource.loop = true;
+        audioSource.volume = musicVolume;
+
+        PlayBackgroundMusic();
     }
 
     void Update()
@@ -97,6 +111,7 @@ public class GameManager : MonoBehaviour
     public void StopGame()
     {
         IsGameRunning = false;
+        StopBackgroundMusic();
     }
 
     private void UpdateScoreUI()
@@ -117,5 +132,22 @@ public class GameManager : MonoBehaviour
 
         SoundManager.PlaySound(SoundManager.Instance.playerDeadSound);
         Debug.Log("A player has died!!");
+    }
+
+
+    public void PlayBackgroundMusic()
+    {
+        if (audioSource != null && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+    }
+
+    public void StopBackgroundMusic()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
     }
 }

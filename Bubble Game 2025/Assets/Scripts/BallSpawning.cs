@@ -5,6 +5,7 @@ public class BallSpawning : MonoBehaviour
 {
     public GameObject BallPrefab;
     public AudioClip spawnSound;
+    public float soundVolume = 1f; // Public variable to adjust volume
 
     private System.Random rnd = new System.Random();
     public float interval = 2f; // Time interval in seconds
@@ -54,7 +55,7 @@ public class BallSpawning : MonoBehaviour
     {
         if (spawnSound != null && audioSource != null)
         {
-            audioSource.PlayOneShot(spawnSound);
+            audioSource.PlayOneShot(spawnSound, soundVolume);
         }
     }
 }

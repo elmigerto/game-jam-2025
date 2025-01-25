@@ -59,7 +59,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public static void PlaySoundOfList(IList<AudioClip> sounds)
+    public static void PlaySound(IList<AudioClip> sounds)
     {
         if (sounds != null && sounds.Count > 0)
         {
@@ -74,8 +74,9 @@ public class SoundManager : MonoBehaviour
         if (playerSounds != null && playerSounds.Count > 0)
         {
             var playerNumber = Mathf.Min(player, playerSounds.Count - 1);
-            var playerSound = playerSounds[playerNumber].clips;
-            PlaySound(playerSound);
+            var sounds = playerSounds[playerNumber].clips;
+            sounds = sounds.Count > 0 ? sounds : playerSounds[0].clips;
+            PlaySound(sounds);
         }
     }
 }

@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = spawnPoint.position;
         player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         AssignModel(player);
-        SoundManager.PlaySound(SoundManager.Instance.playerStartingVoice);
+        SoundManager.PlayPlayerSound(SoundManager.Instance.playerStartingVoice, playerOneSoundProfile);
 
 
         playerCount++;

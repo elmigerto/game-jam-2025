@@ -143,5 +143,6 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = false;
         Debug.Log("Destroying");
+        GameManager.OnPlayerDestroyed(this.gameObject);
     }
 }

@@ -36,7 +36,7 @@ public class BallSpawning : MonoBehaviour
         var vX = rnd.Next(-forceHoricontal, forceHoricontal);
         var vY = forceVertical;
         var vZ = rnd.Next(-forceHoricontal, forceHoricontal);
-        currentBall.GetComponent<Rigidbody>().linearVelocity = new Vector3(vX, vY, vZ);
+        currentBall.GetComponentInChildren<Rigidbody>().linearVelocity = new Vector3(vX, vY, vZ);
 
         SoundManager.PlaySound(SoundManager.Instance.spawnSound);
     }

@@ -1113,7 +1113,7 @@ PrefabInstance:
     - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
       propertyPath: playerMovementSound
       value: 
-      objectReference: {fileID: 8300000, guid: cc798c409fb3c4228a2f9e7a8d89cc0e, type: 3}
+      objectReference: {fileID: 8300000, guid: 8e6436bed957c3e9191b0c0967f8d80c, type: 3}
     - target: {fileID: 2179943128397702241, guid: 8aca90358b738c5029f807260ddd5192, type: 3}
       propertyPath: playerDeadVoice.Array.size
       value: 1

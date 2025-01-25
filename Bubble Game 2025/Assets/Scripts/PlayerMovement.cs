@@ -38,11 +38,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        Debug.Log("Jump");
         if (value.isPressed)
         {
-            Debug.Log($"Player {playerInput.playerIndex} Jumped!");
-            AdjustHeight(jumpForce);
+            AdjustHeight(-jumpForce);
 
         }
         else
@@ -53,11 +51,9 @@ public class PlayerMovement : MonoBehaviour
 
         public void OnCrouch(InputValue value)
     {
-        Debug.Log("Crouch");
         if (value.isPressed)
         {
-            Debug.Log($"Player {playerInput.playerIndex} Crouched!");
-            AdjustHeight(-jumpForce);
+            AdjustHeight(jumpForce);
         }
         else
         {
@@ -97,8 +93,6 @@ public class PlayerMovement : MonoBehaviour
         if (touchedSeed != null)
         {
             touchedSeed.gameObject.GetComponent<Rigidbody>().AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
-            Debug.Log("You dead");
-
         }
 
         // collision with a other player

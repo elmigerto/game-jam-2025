@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SeedBody
       objectReference: {fileID: 0}
+    - target: {fileID: 4750949531299457416, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
+      propertyPath: plantBody
+      value: 
+      objectReference: {fileID: 5785522548066422301}
     - target: {fileID: 7840945068403090313, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -240,31 +244,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 695892264353568037, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7791542069299745710}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
---- !u!1 &2623226959954095875 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 695892264353568037, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
-  m_PrefabInstance: {fileID: 3301100414865652262}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7791542069299745710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2623226959954095875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24fb443194bd68ca098558b66fff8085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  despawnCount: 3
-  arena: {fileID: 4981431373709201979, guid: a1deed58b7d7685f39f6f09c21abbf50, type: 3}
-  plantBody: {fileID: 5785522548066422301}
 --- !u!4 &4692606404088977839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7840945068403090313, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}

@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
     private int lifePoints;
     private float originalMass;
 
+    [Header("Sound Settings")]
+    public int playerSoundNumber = 0;
+
     void Awake()
     {
         lifePoints = 3;
@@ -59,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = false;
                 Thrust(jumpForce);
             }
-            SoundManager.PlaySound(SoundManager.Instance.playerJumpSounds);
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerJumpSounds);
         }
     }
 
@@ -78,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnInteract(InputValue value)
     {
         Debug.Log("suicide");
-        SoundManager.PlaySound(SoundManager.Instance.playerDeadVoice);
+        SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice);
         Destroy(this.gameObject);
     }
 
@@ -147,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int value)
     {
         Debug.Log($"Damage: {value}");
-        SoundManager.PlaySound(SoundManager.Instance.playerDamageVoice);
+        SoundManager.PlayPlayerSound(SoundManager.Instance.playerDamageVoice);
 
         lifePoints -= value;
         if (lifePoints <= 0)

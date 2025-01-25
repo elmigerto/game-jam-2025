@@ -47,10 +47,12 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = false;
             Thrust(jumpForce);
-            Task.Run(() => {
-                Debug.Log("task ran");
+            Task.Run(() =>
+            {
+                Debug.Log("assure the plaer is grounded again");
                 isGrounded = true;
             });
+            SoundManager.PlaySound(SoundManager.Instance.playerJumpSound);
         }
         else
         {
@@ -73,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
     public void OnInteract(InputValue value)
     {
         Debug.Log("suicide");
+        SoundManager.PlaySound(SoundManager.Instance.playerDeadSound);
+
         Destroy(this.gameObject);
     }
 
@@ -93,6 +97,8 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = rb.linearVelocity.y; // Maintain current vertical velocity
             rb.linearVelocity = velocity;
             rb.mass = !isGrounded ? orginialMass : orginialMass * massMuliplier;
+            SoundManager.PlaySound(SoundManager.Instance.player1MovementSounds);
+
         }
     }
 
@@ -110,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // var direction = collision.contacts[0].point + position
             touchedSeed.gameObject.GetComponent<Rigidbody>().AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
+            SoundManager.PlaySound(SoundManager.Instance.bounceSounds);
         }
 
         // collision with a other player
@@ -132,6 +139,8 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int value)
     {
         Debug.Log($"Damage: {value}");
+        SoundManager.PlaySound(SoundManager.Instance.player1HitSounds);
+
         lifePoints -= value;
         if (lifePoints <= 0)
         {
@@ -147,5 +156,5 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // sound, low volume pop1
-    
+
 }

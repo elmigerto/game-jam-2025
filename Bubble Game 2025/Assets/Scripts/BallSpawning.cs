@@ -13,13 +13,6 @@ public class BallSpawning : MonoBehaviour
     public int forceVertical = 2;
 
     private float timer = 0f;  // Tracks elapsed time
-    private AudioSource audioSource;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        audioSource = gameObject.AddComponent<AudioSource>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -43,14 +36,7 @@ public class BallSpawning : MonoBehaviour
         var vZ = rnd.Next(-forceHoricontal, forceHoricontal);
         currentBall.GetComponentInChildren<Rigidbody>().linearVelocity = new Vector3(vX, vY, vZ);
 
-        PlaySpawnSound();
+        SoundManager.PlaySound(SoundManager.Instance.spawnSound);
     }
 
-    private void PlaySpawnSound()
-    {
-        if (spawnSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(spawnSound, soundVolume);
-        }
-    }
 }

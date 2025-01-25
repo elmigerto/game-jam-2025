@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
     internal static void OnPlayerDestroyed(GameObject gameObject)
     {
 
-        // SoundManager.PlaySound(SoundManager.Instance.pl);
+        SoundManager.PlaySound(SoundManager.Instance.playerDeadSound);
         Debug.Log("A player has died!!");
     }
 }

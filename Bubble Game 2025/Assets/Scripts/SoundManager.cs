@@ -7,15 +7,19 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance;
     public List<AudioClip> floorSounds;
     public List<AudioClip> glasSounds;
+    public List<AudioClip> bounceSounds;
     public List<AudioClip> growSounds;
     public AudioClip spawnSound;
+    public AudioClip playerJumpSound;
+    public AudioClip playerDeadSound;
     public AudioClip pointSound;
     public AudioClip player1HitSounds;
     public AudioClip player1MovementSounds;
     public List<AudioClip> player1IdleSounds;
-    public AudioClip player2HitSounds;
-    public AudioClip player2MovementSounds;
-    public List<AudioClip> player2IdleSounds;
+
+    // public AudioClip player2HitSounds;
+    // public AudioClip player2MovementSounds;
+    // public List<AudioClip> player2IdleSounds;
     public float soundVolume = 1f; // Public variable to adjust volume
 
 
@@ -43,7 +47,8 @@ public class SoundManager : MonoBehaviour
     public static void PlaySound(IList<AudioClip> sounds)
     {
         // todo select random sound
-        var sound = sounds[0];
-        PlaySound(sound);
+        int randomIndex = Random.Range(0, sounds.Count); // Random index
+        var randomSound = sounds[randomIndex]; // Get the value
+        PlaySound(randomSound);
     }
 }

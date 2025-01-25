@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         Transform spawnPoint = spawnPoints[playerCount % spawnPoints.Length]; // Cycle through spawn points
         player.transform.position = spawnPoint.position;
         player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
-        AssignMaterial(player);
+        //AssignMaterial(player);
 
         playerCount++;
     }

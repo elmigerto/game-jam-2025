@@ -20,11 +20,14 @@ public class SeedBehaviour : MonoBehaviour
             if (despawnCount == 0)
             {
                 BecomePlant();
-            }else{
+            }
+            else
+            {
                 BounceFromGround();
             }
         }
-        else{
+        else
+        {
             // Debug.Log("hit that" + collision.gameObject.name);
         }
 

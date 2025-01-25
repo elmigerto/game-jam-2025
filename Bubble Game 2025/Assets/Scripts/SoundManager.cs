@@ -40,12 +40,13 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-
     public static void PlaySound(IList<AudioClip> sounds)
     {
-        // todo select random sound
-        int randomIndex = Random.Range(0, sounds.Count); // Random index
-        var randomSound = sounds[randomIndex]; // Get the value
-        PlaySound(randomSound);
+        if (sounds != null && sounds.Count > 0)
+        {
+            int randomIndex = Random.Range(0, sounds.Count-1); // Random index
+            var randomSound = sounds[randomIndex]; // Get the value
+            PlaySound(randomSound);
+        }
     }
 }

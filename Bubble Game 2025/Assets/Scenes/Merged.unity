@@ -661,10 +661,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sphere_outer
       objectReference: {fileID: 0}
-    - target: {fileID: 4512396900400997065, guid: 791b5205fd2ad4fd2a8c6f547dd8e081, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

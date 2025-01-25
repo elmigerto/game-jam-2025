@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Jump Settings")]
     public float jumpForce = 50f; // Force applied when jumping
-    
+
     [Header("Bounce Settings")]
     public float bounceForce = 20;
 
@@ -38,10 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && isGrounded)
         {
-            AdjustHeight(-jumpForce);
-
+            isGrounded = false;
+            Thrust(jumpForce);
         }
         else
         {
@@ -49,11 +49,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-        public void OnCrouch(InputValue value)
+    public void OnCrouch(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && !isGrounded)
         {
-            AdjustHeight(jumpForce);
+            Thrust(-jumpForce);
         }
         else
         {
@@ -61,11 +61,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void AdjustHeight(float force)
+    public void OnInteract(InputValue value)
+    {
+        Debug.Log("suicide");
+        Destroy(this.gameObject);
+    }
+
+    private void Thrust(float force)
     {
         if (rb != null)
         {
-            rb.AddForce(Vector3.down * force, ForceMode.VelocityChange);
+            rb.linearVelocity += (Vector3.up * force);//, ForceMode.Impulse);
+            // rb.AddRelativeForce
         }
     }
 
@@ -74,6 +81,11 @@ public class PlayerMovement : MonoBehaviour
         // Apply movement to the Rigidbody
         if (rb != null)
         {
+            if (rb.linearVelocity.y > 0.1f)
+                rb.mass = 5f; // Slows fall
+            else
+                rb.mass = 100f; // Normal jump physics
+
             Vector3 velocity = movement * moveSpeed;
             velocity.y = rb.linearVelocity.y; // Maintain current vertical velocity
             rb.linearVelocity = velocity;
@@ -100,20 +112,30 @@ public class PlayerMovement : MonoBehaviour
         if (touchedplayer != null)
         {
             touchedplayer.gameObject.GetComponent<Rigidbody>().AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
-            Debug.Log("You touched player");
+            // Debug.Log("You touched player");
 
         }
     }
 
-    public void TakeDamage(int value){
+    void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("Exit");
+    }
+
+
+    public void TakeDamage(int value)
+    {
         Debug.Log($"Damage: {value}");
         lifePoints -= value;
-        if(lifePoints <= 0){
+        if (lifePoints <= 0)
+        {
             Destroy(this.gameObject);
         }
     }
 
-    public void onDrestroy(){
+    public void onDrestroy()
+    {
+        isGrounded = false;
         Debug.Log("Destroying");
     }
 }

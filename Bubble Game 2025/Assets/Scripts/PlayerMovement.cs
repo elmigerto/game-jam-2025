@@ -10,12 +10,17 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f; // Speed of the player
 
     [Header("Jump Settings")]
-    public float jumpForce = 50f; // Force applied when jumping
+    public float jumpForce = 10f; // Force applied when jumping
+    public float fallMultiplier = 0.5f; // Makes falling slower
+    public float lowJumpMultiplier = 2f; // Makes low jumps smoother
+    public bool allowMultipleJumps = true; // Enable or disable multiple jumps
+
+    [Header("Descent Settings")]
+    public float descentForce = 10f; // Force applied when descending
 
     [Header("Bounce Settings")]
-    public float bounceForce = 20;
-
-    public float bounceRadius = 5;
+    public float bounceForce = 20f;
+    public float bounceRadius = 5f;
 
     private Rigidbody rb;
     private PlayerInput playerInput;
@@ -23,17 +28,15 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = true; // Check if the player is on the ground
 
     private int lifePoints;
-    private float orginialMass;
-    private float massMuliplier = 5;
+    private float originalMass;
 
     void Awake()
     {
         lifePoints = 3;
         rb = GetComponent<Rigidbody>();
-        orginialMass = rb.mass;
+        originalMass = rb.mass;
         playerInput = GetComponent<PlayerInput>();
     }
-
 
     void OnMove(InputValue value)
     {
@@ -43,18 +46,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        if (value.isPressed && isGrounded)
+        if (value.isPressed)
         {
-            isGrounded = false;
-            Thrust(jumpForce);
-            Task.Run(() => {
-                Debug.Log("task ran");
-                isGrounded = true;
-            });
-        }
-        else
-        {
-            Debug.Log(value.ToString());
+            if (isGrounded || allowMultipleJumps)
+            {
+                isGrounded = false;
+                Thrust(jumpForce);
+            }
         }
     }
 
@@ -62,25 +60,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (value.isPressed && !isGrounded)
         {
-            Thrust(-jumpForce);
+            Thrust(-descentForce);
         }
-        else
-        {
-            Debug.Log(value.ToString());
-        }
-    }
-
-    public void OnInteract(InputValue value)
-    {
-        Debug.Log("suicide");
-        Destroy(this.gameObject);
     }
 
     private void Thrust(float force)
     {
         if (rb != null)
         {
-            rb.linearVelocity = Vector3.up * force;
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, force, rb.linearVelocity.z);
         }
     }
 
@@ -92,42 +80,45 @@ public class PlayerMovement : MonoBehaviour
             Vector3 velocity = movement * moveSpeed;
             velocity.y = rb.linearVelocity.y; // Maintain current vertical velocity
             rb.linearVelocity = velocity;
-            rb.mass = !isGrounded ? orginialMass : orginialMass * massMuliplier;
+
+            // Adjust falling and jumping behavior
+            if (rb.linearVelocity.y < 0) // Falling
+            {
+                rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+            }
+            else if (rb.linearVelocity.y > 0 && !Input.GetKey(KeyCode.Space)) // Low jump
+            {
+                rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+            }
         }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        // Check if the player is grounded when colliding with a surface
         if (collision.contacts[0].normal.y > 0.5f) // Ensure collision is with a surface beneath
         {
             isGrounded = true;
         }
 
-        // collision with a seed
         var touchedSeed = collision.gameObject.GetComponent<SeedBehaviour>();
         if (touchedSeed != null)
         {
-            // var direction = collision.contacts[0].point + position
-            touchedSeed.gameObject.GetComponent<Rigidbody>().AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
+            touchedSeed.gameObject.GetComponent<Rigidbody>()
+                .AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
         }
 
-        // collision with a other player
-        var touchedplayer = collision.gameObject.GetComponent<PlayerMovement>();
-        if (touchedplayer != null)
+        var touchedPlayer = collision.gameObject.GetComponent<PlayerMovement>();
+        if (touchedPlayer != null)
         {
-            touchedplayer.gameObject.GetComponent<Rigidbody>().AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
-            // Debug.Log("You touched player");
-
+            touchedPlayer.gameObject.GetComponent<Rigidbody>()
+                .AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        this.isGrounded = false;
-        Debug.Log("Exit");
+        isGrounded = false;
     }
-
 
     public void TakeDamage(int value)
     {
@@ -137,12 +128,5 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
-
-    public void onDrestroy()
-    {
-        isGrounded = false;
-        Debug.Log("Destroying");
-        GameManager.OnPlayerDestroyed(this.gameObject);
     }
 }

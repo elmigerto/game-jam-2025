@@ -26,11 +26,11 @@ public class BallSpawning : MonoBehaviour
 
     public void InstantiateSeed()
     {
-        var currentBall = Instantiate(BallPrefab, this.transform.position + new Vector3(0, 2, 0), new Quaternion());
+        var currentBall = Instantiate(BallPrefab, this.transform.position + new Vector3(0, 2.5f, 0), new Quaternion());
         var vX = rnd.Next(-forceHoricontal, forceHoricontal);
         var vY = forceVertical;
         var vZ = rnd.Next(-forceHoricontal, forceHoricontal);
-        currentBall.GetComponentInChildren<Rigidbody>().linearVelocity = new Vector3(vX, vY, vZ);
+        currentBall.GetComponent<Rigidbody>().linearVelocity = new Vector3(vX, vY, vZ);
 
         SoundManager.PlaySound(SoundManager.Instance.spawnSound);
     }

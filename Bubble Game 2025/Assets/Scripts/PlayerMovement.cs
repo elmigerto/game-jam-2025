@@ -47,6 +47,10 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = false;
             Thrust(jumpForce);
+            Task.Run(() => {
+                Debug.Log("task ran");
+                isGrounded = true;
+            });
         }
         else
         {
@@ -104,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
         var touchedSeed = collision.gameObject.GetComponent<SeedBehaviour>();
         if (touchedSeed != null)
         {
+            // var direction = collision.contacts[0].point + position
             touchedSeed.gameObject.GetComponent<Rigidbody>().AddExplosionForce(bounceForce, collision.contacts[0].point, bounceRadius);
         }
 

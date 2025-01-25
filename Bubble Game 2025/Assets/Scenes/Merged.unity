@@ -335,7 +335,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: timeScaleFactor
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5376956718868422980, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: m_Name
@@ -560,8 +560,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6078598741023310833, guid: bafd45841350c55bb8c7a78ef548ec61, type: 3}
+      propertyPath: interval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078598741023310833, guid: bafd45841350c55bb8c7a78ef548ec61, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078598741023310833, guid: bafd45841350c55bb8c7a78ef548ec61, type: 3}
+      propertyPath: forceVertical
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

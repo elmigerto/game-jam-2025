@@ -33,14 +33,9 @@ public class BallSpawning : MonoBehaviour
             timer -= interval; // Reset timer (keep remainder for accuracy)
             InstantiateBall();        // Call the desired method
         }
-
-        if (Time.deltaTime > 1)
-        {
-            InstantiateBall();
-        }
     }
 
-    private void InstantiateBall()
+    public void InstantiateBall()
     {
         var currentBall = Instantiate(BallPrefab, this.transform.position + new Vector3(0, 2, 0), new Quaternion());
         var vX = rnd.Next(-forceHoricontal, forceHoricontal);

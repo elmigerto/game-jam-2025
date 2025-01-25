@@ -214,6 +214,8 @@ MonoBehaviour:
   descentForce: 10
   bounceForce: 200
   bounceRadius: 20
+  damageForce: 6
+  lifePoints: 5
 --- !u!114 &7358296814538922379
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3855155799636244180}
   - component: {fileID: 3140548775372228488}
   - component: {fileID: 341572377413147231}
+  - component: {fileID: 4750949531299457416}
   m_Layer: 0
   m_Name: SeedBody
   m_TagString: Untagged
@@ -136,3 +137,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4750949531299457416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695892264353568037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fb443194bd68ca098558b66fff8085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnCount: 5
+  arena: {fileID: 4981431373709201979, guid: a1deed58b7d7685f39f6f09c21abbf50, type: 3}
+  plantBody: {fileID: 0}
+  bounceForce: 130

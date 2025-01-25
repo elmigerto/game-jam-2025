@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5409467966201846705}
-  - component: {fileID: 5761181317928400447}
   m_Layer: 0
   m_Name: Seed
   m_TagString: Untagged
@@ -34,18 +33,6 @@ Transform:
   - {fileID: 2149213932963650971}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5761181317928400447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2262687126560002091}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24fb443194bd68ca098558b66fff8085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5785522548066422301
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,13 +45,15 @@ GameObject:
   - component: {fileID: 6820405373035408547}
   - component: {fileID: 8824670980101861328}
   - component: {fileID: 4463284226449056690}
+  - component: {fileID: 5203208061082938184}
+  - component: {fileID: 9092786540841382458}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: PlantBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2149213932963650971
 Transform:
   m_ObjectHideFlags: 0
@@ -156,6 +145,46 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!54 &5203208061082938184
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785522548066422301}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &9092786540841382458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785522548066422301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d19c3db4198a808c9a0d6b2774e7fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagevalue: 1
 --- !u!1001 &3301100414865652262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -168,6 +197,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SeedBody
       objectReference: {fileID: 0}
+    - target: {fileID: 4750949531299457416, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
+      propertyPath: plantBody
+      value: 
+      objectReference: {fileID: 5785522548066422301}
     - target: {fileID: 7840945068403090313, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -211,28 +244,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 695892264353568037, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7791542069299745710}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
---- !u!1 &2623226959954095875 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 695892264353568037, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}
-  m_PrefabInstance: {fileID: 3301100414865652262}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7791542069299745710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2623226959954095875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24fb443194bd68ca098558b66fff8085, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &4692606404088977839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7840945068403090313, guid: c219ae03e1aa365f7825459377e8e9cc, type: 3}

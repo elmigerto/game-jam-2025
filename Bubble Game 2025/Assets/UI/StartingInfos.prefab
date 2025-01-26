@@ -126,6 +126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Controls
       objectReference: {fileID: 0}
+    - target: {fileID: 7826914025846640661, guid: e59f54233f56f4023a69c73b891112e4, type: 3}
+      propertyPath: m_text
+      value: 'Use controllers to play. You can plug in two controllers. '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

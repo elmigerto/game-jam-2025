@@ -118,6 +118,14 @@ public class GameManager : MonoBehaviour
         IsGameRunning = true;
     }
 
+
+    // respanws the player when it leaves the sphere
+    public static void RespawnPlayer(GameObject player)
+    {
+        Transform spawnPoint = Instance.spawnPoints[Instance.playerCount % Instance.spawnPoints.Length]; // Cycle through spawn points
+        player.transform.position = spawnPoint.position;
+    }
+
     // Adds to the player's score
     public void AddScore(int points)
     {

@@ -154,7 +154,7 @@ MonoBehaviour:
   despawnCount: 5
   arena: {fileID: 4981431373709201979, guid: a1deed58b7d7685f39f6f09c21abbf50, type: 3}
   plantBody: {fileID: 0}
-  bounceForce: 130
+  bounceForce: 150
   targetTag: SphereWorld
   scoreValue: 10
   BallPrefab: {fileID: 0}

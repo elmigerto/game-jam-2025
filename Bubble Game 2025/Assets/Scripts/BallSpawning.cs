@@ -46,7 +46,7 @@ public class BallSpawning : MonoBehaviour
 
     private void IncrementSpeed()
     {
-        interval -= 0.01f;
+        interval -= 0.05f;
         if(interval < 0.2f) interval = 0.2f;
         
         GameManager.UpdateLevel((int)(interval * 10));

@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public float musicVolume = 0.5f; // Volume level for background music
 
     private AudioSource audioSource;
+    private int maxLevel = 50;
 
     void Awake()
     {
@@ -131,7 +132,7 @@ public class GameManager : MonoBehaviour
     {
         Score += points;
         UpdateScoreUI();
-        SoundManager.PlayPlayerSound(SoundManager.Instance.playerScoreVoice);
+        SoundManager.PlayPlayerSound(SoundManager.Instance.playerScoreVoice, UnityEngine.Random.Range(0, 3));
     }
 
     // Advances to the next level
@@ -162,13 +163,6 @@ public class GameManager : MonoBehaviour
         Instance.p1text.text = displayString;
     }
 
-    internal static void OnPlayerDestroyed(GameObject gameObject)
-    {
-
-        SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice);
-        Debug.Log("A player has died!!");
-    }
-
 
     public void PlayBackgroundMusic()
     {
@@ -188,6 +182,6 @@ public class GameManager : MonoBehaviour
 
     internal static void UpdateLevel(int v)
     {
-        Instance.levelText.text = v.ToString();
+        Instance.levelText.text = (Instance.maxLevel - v).ToString();
     }
 }

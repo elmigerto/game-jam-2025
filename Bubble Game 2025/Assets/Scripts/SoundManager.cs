@@ -71,7 +71,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public static void PlayPlayerSound(IList<AudioClipPlayer> playerSounds, int player = 0)
+    public static async Task PlayPlayerSound(IList<AudioClipPlayer> playerSounds, int player = 0)
     {
         if(isTalking) return;
         isTalking = true;
@@ -82,7 +82,7 @@ public class SoundManager : MonoBehaviour
             sounds = sounds.Count > 0 ? sounds : playerSounds[0].clips;
             PlaySound(sounds);
         }
-        Task.Delay(400);
+        await Task.Delay(400);
         isTalking = false;
     }
 }

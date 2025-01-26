@@ -3,7 +3,12 @@ guid: d063170f6c4363a44bf9cd7ad6e5ff47
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SphereAlpha
+    second: {fileID: 2100000, guid: 155f9bfbedccb4dc7a1d5ca3847d7aef, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

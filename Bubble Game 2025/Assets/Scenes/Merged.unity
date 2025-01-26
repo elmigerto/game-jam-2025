@@ -5348,7 +5348,7 @@ PrefabInstance:
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: levelText
       value: 
-      objectReference: {fileID: 1964036408}
+      objectReference: {fileID: 0}
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: musicVolume
       value: 0.1
@@ -6895,6 +6895,14 @@ PrefabInstance:
     - target: {fileID: 5083165291200333270, guid: bafd45841350c55bb8c7a78ef548ec61, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951251186852394109, guid: bafd45841350c55bb8c7a78ef548ec61, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951251186852394109, guid: bafd45841350c55bb8c7a78ef548ec61, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5951251186852394109, guid: bafd45841350c55bb8c7a78ef548ec61, type: 3}
       propertyPath: m_LocalPosition.x

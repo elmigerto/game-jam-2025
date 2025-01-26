@@ -22,12 +22,16 @@ public class GameManager : MonoBehaviour
 
     public bool IsGameRunning { get; private set; }
 
+ 
+
 
     [Header("UI Settings")]
     public TextMeshProUGUI scoreTMPText; // For TextMeshPro
     public TextMeshProUGUI p1text; // For TextMeshPro
     public TextMeshProUGUI p2text; // For TextMeshPro
     public TextMeshProUGUI levelText;
+    public GameObject StartingInfos;
+    public float DisableInfosTime = 2f;
 
     [Header("Audio Settings")]
     public AudioClip backgroundMusic; // Assign your background music in the Inspector
@@ -50,6 +54,7 @@ public class GameManager : MonoBehaviour
         audioSource.volume = musicVolume;
 
         PlayBackgroundMusic();
+        RestartGame();
     }
 
     void Update()
@@ -189,5 +194,24 @@ public class GameManager : MonoBehaviour
     internal static void UpdateLevel(int v)
     {
         Instance.levelText.text = v.ToString();
+    }
+
+    void RestartGame()
+    {
+        ResetGame();
+        EnableStartingInfos();
+        Invoke("DisableStartingInfos", DisableInfosTime);
+    }
+
+
+    void EnableStartingInfos()
+    {
+        StartingInfos.SetActive(true);
+    }
+
+
+    void DisableStartingInfos()
+    {
+        StartingInfos.SetActive(false);
     }
 }

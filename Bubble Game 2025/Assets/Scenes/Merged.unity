@@ -2660,17 +2660,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 35.876, y: 0, z: 0}
---- !u!114 &396232897 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3377542823884328464, guid: f082351fcc6644c3cbf432416fb8d9e3, type: 3}
-  m_PrefabInstance: {fileID: 1964036407}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &405152645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5391,7 +5380,11 @@ PrefabInstance:
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: levelText
       value: 
-      objectReference: {fileID: 396232897}
+      objectReference: {fileID: 221945979}
+    - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
+      propertyPath: RestartBox
+      value: 
+      objectReference: {fileID: 360036530}
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: musicVolume
       value: 0.1
@@ -5403,7 +5396,7 @@ PrefabInstance:
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: StartingInfos
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1163362033}
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: backgroundMusic
       value: 
@@ -6243,6 +6236,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8265383768070421340, guid: c72723a26e2da774ba567749305e45b6, type: 3}
   m_PrefabInstance: {fileID: 1159920598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1163362033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3083460354180574917, guid: f082351fcc6644c3cbf432416fb8d9e3, type: 3}
+  m_PrefabInstance: {fileID: 1964036407}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1186138896
 PrefabInstance:

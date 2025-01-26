@@ -223,7 +223,7 @@ public class GameManager : MonoBehaviour
     void OnDefeat()
     {
         Debug.Log("Players defeated");
-        RestartBox.SetActive(true);
+      //  RestartBox.SetActive(true);
     }
 
 

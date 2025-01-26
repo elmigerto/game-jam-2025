@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f; // Speed of the player
+    private Animator[] animators; // Reference to the Animators of the models
 
     [Header("Jump Settings")]
     public float jumpForce = 10f; // Force applied when jumping
@@ -45,6 +46,15 @@ public class PlayerMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         StartCoroutine(RepeatAction(4, CheckIdle));
         StartCoroutine(RepeatAction(0.4f, PlayMovementSound)); // TODO: adjust  to actual moving sound
+
+
+
+        // Get the Animator components from the models inside the player prefab
+        animators = GetComponentsInChildren<Animator>();
+        if (animators.Length == 0)
+        {
+            Debug.LogWarning("No animators found in child objects.");
+        }
     }
 
     void OnMove(InputValue value)
@@ -57,6 +67,8 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(movement);
         }
+
+        UpdateAnimator();
     }
 
     public void OnJump(InputValue value)
@@ -128,6 +140,20 @@ public class PlayerMovement : MonoBehaviour
             // Increment timer by the time elapsed since the last frame
             timer += Time.deltaTime;
         }
+
+        UpdateAnimator();
+
+    }
+
+    private void UpdateAnimator()
+    {
+        foreach (var animator in animators)
+        {
+            if (animator != null)
+            {
+                animator.SetFloat("Speed", math.max(movement.magnitude * moveSpeed, 1));
+            }
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -190,7 +216,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Random.Range(1, 10) > 2)
         {
-            SoundManager.PlayPlayerSound(SoundManager.Instance.playerIdleVoice,playerSoundNumber);
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerIdleVoice, playerSoundNumber);
         }
     }
 

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreTMPText; // For TextMeshPro
     public TextMeshProUGUI p1text; // For TextMeshPro
     public TextMeshProUGUI p2text; // For TextMeshPro
+    public TextMeshProUGUI levelText;
 
     [Header("Audio Settings")]
     public AudioClip backgroundMusic; // Assign your background music in the Inspector
@@ -87,8 +88,8 @@ public class GameManager : MonoBehaviour
 
         var playerMovement = player.gameObject.GetComponent<PlayerMovement>();
             playerMovement.playerIndex = player.playerIndex;
-            playerMovement.playerSoundNumber = UnityEngine.Random.Range(0, 3);
-            
+            playerMovement.playerSoundNumber = UnityEngine.Random.Range(0, 3); // 1=dani, 2=tobi, 3=Anic, 4=Arthur
+
         // Use the player index to determine which model to activate
         if (player.playerIndex % 2 == 0) // Even player index: Show Player1
         {
@@ -175,5 +176,10 @@ public class GameManager : MonoBehaviour
         {
             audioSource.Stop();
         }
+    }
+
+    internal static void UpdateLevel(int v)
+    {
+        Instance.levelText.text = v.ToString();
     }
 }

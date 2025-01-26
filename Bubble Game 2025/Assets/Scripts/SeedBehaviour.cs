@@ -15,7 +15,7 @@ public class SeedBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == arena.name)
+        if (collision.gameObject.CompareTag("Floor"))
         {
             // Debug.LogWarning("here");
             despawnCount -= 1;
@@ -28,18 +28,12 @@ public class SeedBehaviour : MonoBehaviour
                 BounceFromGround();
             }
         }
-        else if (collision.gameObject.CompareTag(targetTag))
+        if (collision.gameObject.CompareTag(targetTag))
         {
-            // Increase the score using the GameManager
-            GameManager.Instance?.AddScore(scoreValue);
-
+            SoundManager.PlaySound(SoundManager.Instance.glasSounds);
             Debug.Log($"Collision with {targetTag}! Score increased by {scoreValue}.");
+            // BounceFromGround();
         }
-        else
-        {
-        SoundManager.PlaySound(SoundManager.Instance.glasSounds);
-        }
-        // tODO: also sund for seed on seed action
     }
 
     private void BounceFromGround()

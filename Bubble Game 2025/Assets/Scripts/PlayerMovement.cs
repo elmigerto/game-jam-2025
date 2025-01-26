@@ -142,7 +142,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         UpdateAnimator();
-
     }
 
     private void UpdateAnimator()
@@ -183,13 +182,9 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = false;
     }
 
-    public void TakeDamage(Collision collision)
+    public void TakeDamage(int damage)
     {
-        // Debug.Log($"Damage: {value}");
-        rb.linearVelocity = Vector3.zero;
-        var direction = (collision.contacts[0].impulse + Vector3.up) * damageForce; // opposit direction
-        rb.AddForce(direction, ForceMode.Impulse);
-        lifePoints -= 1;
+        lifePoints -= damage;
         GameManager.OnPlayerTakeDamage(this);
         if (lifePoints <= 0)
         {
@@ -200,6 +195,16 @@ public class PlayerMovement : MonoBehaviour
         {
             SoundManager.PlayPlayerSound(SoundManager.Instance.playerDamageVoice);
         }
+    }
+
+    // Take damage and also repell away
+    public void TakeDamage(Collision collision)
+    {
+        // Debug.Log($"Damage: {value}");
+        rb.linearVelocity = Vector3.zero;
+        var direction = (collision.contacts[0].impulse + Vector3.up) * damageForce; // opposit direction
+        rb.AddForce(direction, ForceMode.Impulse);
+        TakeDamage(1);
     }
 
 

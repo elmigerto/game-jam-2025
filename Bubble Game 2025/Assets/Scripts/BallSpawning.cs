@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BallSpawning : MonoBehaviour
@@ -9,7 +10,7 @@ public class BallSpawning : MonoBehaviour
     public int forceHoricontal = 4;
     public int forceVertical = 2;
     private float timer = 0f;  // Tracks elapsed time
-
+    private int level;
 
     public void Awake()
     {
@@ -39,6 +40,15 @@ public class BallSpawning : MonoBehaviour
         currentBall.GetComponentInChildren<Rigidbody>().linearVelocity = new Vector3(vX, vY, vZ);
 
         SoundManager.PlaySound(SoundManager.Instance.spawnSound);
+
+        IncrementSpeed();
     }
 
+    private void IncrementSpeed()
+    {
+        interval -= 0.01f;
+        if(interval < 0.2f) interval = 0.2f;
+        
+        GameManager.UpdateLevel((int)(interval * 10));
+    }
 }

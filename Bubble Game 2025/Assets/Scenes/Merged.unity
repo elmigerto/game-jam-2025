@@ -1260,7 +1260,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6111161043506619117, guid: e2c26e5482c6a294b85a8f6ff4b69984, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1483534294}
   m_SourcePrefab: {fileID: 100100000, guid: e2c26e5482c6a294b85a8f6ff4b69984, type: 3}
 --- !u!4 &193484245 stripped
 Transform:
@@ -8085,6 +8088,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1446036132}
+  - component: {fileID: 1446036133}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Floor
@@ -8112,6 +8116,39 @@ Transform:
   - {fileID: 972071626}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1446036133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446036131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a311dceb5937492f82e211e61d8c24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: -2
+  rotationCenter: {x: 0, y: 0, z: 0}
+--- !u!1 &1483534290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6111161043506619117, guid: e2c26e5482c6a294b85a8f6ff4b69984, type: 3}
+  m_PrefabInstance: {fileID: 193484244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1483534294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483534290}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a311dceb5937492f82e211e61d8c24c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: -5
+  rotationCenter: {x: 0, y: 0, z: 0}
 --- !u!1001 &1501105949
 PrefabInstance:
   m_ObjectHideFlags: 0

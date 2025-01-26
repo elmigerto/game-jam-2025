@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
 [System.Serializable]
 public class AudioClipPlayer
 {
-    public string playerNumber; // Optional: Add a name for this group
+    public int playerNumber; // Optional: Add a name for this group
     public List<AudioClip> clips = new List<AudioClip>();
 }
 
@@ -78,7 +79,7 @@ public class SoundManager : MonoBehaviour
         if (playerSounds != null && playerSounds.Count > 0)
         {
             var playerNumber = Mathf.Min(player, playerSounds.Count - 1);
-            var sounds = playerSounds[playerNumber].clips;
+            var sounds = playerSounds.FirstOrDefault(x => x.playerNumber == playerNumber).clips;
             sounds = sounds.Count > 0 ? sounds : playerSounds[0].clips;
             PlaySound(sounds);
         }

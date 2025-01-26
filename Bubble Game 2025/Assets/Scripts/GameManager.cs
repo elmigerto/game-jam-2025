@@ -181,15 +181,13 @@ public class GameManager : MonoBehaviour
         Instance.p1text.text = displayString;
     }
 
-<<<<<<< HEAD
+
     internal static void OnPlayerDestroyed(GameObject gameObject)
     {
         SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice);
         Debug.Log("A player has died!!");
     }
 
-=======
->>>>>>> 3992d5f906cab35544cc41b2248020078421b108
 
     public void PlayBackgroundMusic()
     {

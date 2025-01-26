@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         var playerMovement = player.gameObject.GetComponent<PlayerMovement>();
             playerMovement.playerIndex = player.playerIndex;
             playerMovement.playerSoundNumber = UnityEngine.Random.Range(0, 3); // 1=dani, 2=tobi, 3=Anic, 4=Arthur
-
+            Debug.Log(playerMovement.playerSoundNumber);
         // Use the player index to determine which model to activate
         if (player.playerIndex % 2 == 0) // Even player index: Show Player1
         {

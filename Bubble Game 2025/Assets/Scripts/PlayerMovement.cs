@@ -75,12 +75,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (value.isPressed)
         {
+            if (Random.Range(1, 10) > 2)
+            {
+                SoundManager.PlayPlayerSound(SoundManager.Instance.playerJumpSounds, playerSoundNumber);
+            }
             if (isGrounded || allowMultipleJumps)
             {
                 isGrounded = false;
                 Thrust(jumpForce);
             }
-            SoundManager.PlayPlayerSound(SoundManager.Instance.playerJumpSounds, playerSoundNumber);
         }
     }
 
@@ -229,8 +232,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isMoving && isGrounded)
         {
-
-            SoundManager.PlaySound(SoundManager.Instance.playerMovementSound);
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerMovementSounds, playerSoundNumber);
         }
 
     }

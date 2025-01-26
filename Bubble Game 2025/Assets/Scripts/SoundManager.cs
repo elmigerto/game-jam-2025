@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour
 
 
     [Header("Player Audio Clips")]
-    public AudioClip playerMovementSound;
+    public List<AudioClipPlayer> playerMovementSounds = new List<AudioClipPlayer>();
     public List<AudioClipPlayer> playerJumpSounds = new List<AudioClipPlayer>();
     public List<AudioClipPlayer> playerStartingVoice = new List<AudioClipPlayer>();
     public List<AudioClipPlayer> playerDeadVoice = new List<AudioClipPlayer>();
@@ -61,7 +61,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public static void PlaySound(IList<AudioClip> sounds)
+    public static void PlaySound(List<AudioClip> sounds)
     {
         if (sounds != null && sounds.Count > 0)
         {
@@ -82,7 +82,7 @@ public class SoundManager : MonoBehaviour
             sounds = sounds.Count > 0 ? sounds : playerSounds[0].clips;
             PlaySound(sounds);
         }
-        await Task.Delay(400);
+        await Task.Delay(500);
         isTalking = false;
     }
 }

@@ -99,6 +99,11 @@ public class PlayerMovement : MonoBehaviour
     public void OnInteract(InputValue value)
     {
         Debug.Log("suicide");
+        PlayerDeath();
+    }
+
+    public void PlayerDeath()
+    {
         SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice);
         Destroy(this.gameObject);
     }
@@ -188,8 +193,7 @@ public class PlayerMovement : MonoBehaviour
         GameManager.OnPlayerTakeDamage(this);
         if (lifePoints <= 0)
         {
-            SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice);
-            Destroy(this.gameObject);
+            PlayerDeath();
         }
         else
         {

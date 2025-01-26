@@ -26,7 +26,7 @@ public class SphereWorld : MonoBehaviour
         if (collision.gameObject.CompareTag(seedTag))
         {
             // Increase the score using the GameManager
-            // GameManager.Instance?.AddScore(scoreSeed);
+            GameManager.Instance?.AddScore(scoreSeed);
             Destroy(collision.gameObject, 3f);
         }
     }

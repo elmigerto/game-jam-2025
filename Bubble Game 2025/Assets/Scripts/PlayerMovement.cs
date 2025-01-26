@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
         StartCoroutine(RepeatAction(4, CheckIdle));
-        StartCoroutine(RepeatAction(0.4f, PlayMovementSound)); // TODO: adjust  to actual moving sound
+        StartCoroutine(RepeatAction(0.4f, PlayMovementSound));
 
 
 
@@ -75,12 +75,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (value.isPressed)
         {
+            if (Random.Range(1, 10) > 2)
+            {
+                SoundManager.PlayPlayerSound(SoundManager.Instance.playerJumpSounds, playerSoundNumber);
+            }
             if (isGrounded || allowMultipleJumps)
             {
                 isGrounded = false;
                 Thrust(jumpForce);
             }
-            SoundManager.PlayPlayerSound(SoundManager.Instance.playerJumpSounds);
         }
     }
 
@@ -99,12 +102,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnInteract(InputValue value)
     {
         Debug.Log("suicide");
-        PlayerDeath();
-    }
-
-    public void PlayerDeath()
-    {
-        SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice);
+        SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice, playerSoundNumber);
         Destroy(this.gameObject);
     }
 
@@ -193,11 +191,12 @@ public class PlayerMovement : MonoBehaviour
         GameManager.OnPlayerTakeDamage(this);
         if (lifePoints <= 0)
         {
-            PlayerDeath();
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice, playerSoundNumber);
+            Destroy(this.gameObject);
         }
         else
         {
-            SoundManager.PlayPlayerSound(SoundManager.Instance.playerDamageVoice);
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerDamageVoice, playerSoundNumber);
         }
     }
 
@@ -231,10 +230,9 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayMovementSound()
     {
-        if (isMoving)
+        if (isMoving && isGrounded)
         {
-
-            SoundManager.PlaySound(SoundManager.Instance.playerMovementSound);
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerMovementSounds, playerSoundNumber);
         }
 
     }

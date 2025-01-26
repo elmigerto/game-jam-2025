@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public float musicVolume = 0.5f; // Volume level for background music
 
     private AudioSource audioSource;
+    private int maxLevel = 50;
 
     void Awake()
     {
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour
         var playerMovement = player.gameObject.GetComponent<PlayerMovement>();
             playerMovement.playerIndex = player.playerIndex;
             playerMovement.playerSoundNumber = UnityEngine.Random.Range(0, 3); // 1=dani, 2=tobi, 3=Anic, 4=Arthur
-
+            Debug.Log(playerMovement.playerSoundNumber);
         // Use the player index to determine which model to activate
         if (player.playerIndex % 2 == 0) // Even player index: Show Player1
         {
@@ -149,7 +150,7 @@ public class GameManager : MonoBehaviour
     {
         Score += points;
         UpdateScoreUI();
-        SoundManager.PlayPlayerSound(SoundManager.Instance.playerScoreVoice);
+        SoundManager.PlayPlayerSound(SoundManager.Instance.playerScoreVoice, UnityEngine.Random.Range(0, 3));
     }
 
     // Advances to the next level
@@ -180,12 +181,15 @@ public class GameManager : MonoBehaviour
         Instance.p1text.text = displayString;
     }
 
+<<<<<<< HEAD
     internal static void OnPlayerDestroyed(GameObject gameObject)
     {
         SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice);
         Debug.Log("A player has died!!");
     }
 
+=======
+>>>>>>> 3992d5f906cab35544cc41b2248020078421b108
 
     public void PlayBackgroundMusic()
     {
@@ -205,7 +209,7 @@ public class GameManager : MonoBehaviour
 
     internal static void UpdateLevel(int v)
     {
-        Instance.levelText.text = v.ToString();
+        Instance.levelText.text = $"Level: {(Instance.maxLevel - v)}"; //.ToString();
     }
 
     public void RestartGame()

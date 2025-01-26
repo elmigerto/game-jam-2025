@@ -15,6 +15,6 @@ public class RotateAroundYAxis : MonoBehaviour
         float rotationThisFrame = rotationSpeed * Time.deltaTime;
 
         // Rotate around the specified center point along the global Y axis
-        transform.RotateAround(rotationCenter, Vector3.up, rotationThisFrame);
+        transform.RotateAround(rotationCenter, Vector3.down, rotationThisFrame);
     }
 }

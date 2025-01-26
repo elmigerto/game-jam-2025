@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 [System.Serializable]
@@ -39,6 +40,7 @@ public class SoundManager : MonoBehaviour
 
 
     private AudioSource audioSource;
+    private static bool isTalking;
 
     void Awake()
     {
@@ -71,6 +73,8 @@ public class SoundManager : MonoBehaviour
 
     public static void PlayPlayerSound(IList<AudioClipPlayer> playerSounds, int player = 0)
     {
+        if(isTalking) return;
+        isTalking = true;
         if (playerSounds != null && playerSounds.Count > 0)
         {
             var playerNumber = Mathf.Min(player, playerSounds.Count - 1);
@@ -78,5 +82,7 @@ public class SoundManager : MonoBehaviour
             sounds = sounds.Count > 0 ? sounds : playerSounds[0].clips;
             PlaySound(sounds);
         }
+        Task.Delay(400);
+        isTalking = false;
     }
 }

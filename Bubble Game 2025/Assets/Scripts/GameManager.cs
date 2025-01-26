@@ -22,15 +22,15 @@ public class GameManager : MonoBehaviour
 
     public bool IsGameRunning { get; private set; }
 
-    public Text scoreText; // Legacy UI
+
+    [Header("UI Settings")]
     public TextMeshProUGUI scoreTMPText; // For TextMeshPro
+    public TextMeshProUGUI p1text; // For TextMeshPro
+    public TextMeshProUGUI p2text; // For TextMeshPro
 
     [Header("Audio Settings")]
     public AudioClip backgroundMusic; // Assign your background music in the Inspector
     public float musicVolume = 0.5f; // Volume level for background music
-
-    public int playerOneSoundProfile = 0;
-    public int playerTwoSoundProfile = 1;
 
     private AudioSource audioSource;
 
@@ -64,10 +64,11 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Player {player.playerIndex} joined!");
 
         Transform spawnPoint = spawnPoints[playerCount % spawnPoints.Length]; // Cycle through spawn points
+        var playerMovement = player.gameObject.GetComponent<PlayerMovement>();
         player.transform.position = spawnPoint.position;
         player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         AssignModel(player);
-        SoundManager.PlayPlayerSound(SoundManager.Instance.playerStartingVoice, playerOneSoundProfile);
+        SoundManager.PlayPlayerSound(SoundManager.Instance.playerStartingVoice, playerMovement.playerSoundNumber);
 
 
         playerCount++;
@@ -84,25 +85,28 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        var playerMovement = player.gameObject.GetComponent<PlayerMovement>();
+            playerMovement.playerIndex = player.playerIndex;
+            playerMovement.playerSoundNumber = UnityEngine.Random.Range(0, 3);
+            
         // Use the player index to determine which model to activate
         if (player.playerIndex % 2 == 0) // Even player index: Show Player1
         {
             player1Model.gameObject.SetActive(true);
             player2Model.gameObject.SetActive(false);
-            this.playerOneSoundProfile = UnityEngine.Random.Range(0, 3);
-            player2Model.gameObject.GetComponent<PlayerMovement>().playerSoundNumber = this.playerOneSoundProfile;
+            Instance.p1text.text = "o o o o o";
+
         }
         else // Odd player index: Show Player2
         {
             player1Model.gameObject.SetActive(false);
             player2Model.gameObject.SetActive(true);
-            this.playerTwoSoundProfile = UnityEngine.Random.Range(0, 3);
-            player2Model.gameObject.GetComponent<PlayerMovement>().playerSoundNumber = this.playerTwoSoundProfile;
+            Instance.p2text.text = "o o o o o";
         }
+
 
         Debug.Log($"Assigned model for Player {player.playerIndex}");
     }
-
 
     // Resets all game variables
     public void ResetGame()
@@ -111,8 +115,6 @@ public class GameManager : MonoBehaviour
         Level = 1;
         GameTime = 0f;
         IsGameRunning = true;
-        this.playerTwoSoundProfile = UnityEngine.Random.Range(0, 3);
-        this.playerOneSoundProfile = UnityEngine.Random.Range(0, 3);
     }
 
     // Adds to the player's score
@@ -138,15 +140,17 @@ public class GameManager : MonoBehaviour
 
     private void UpdateScoreUI()
     {
-        if (scoreText != null)
-        {
-            scoreText.text = $"Score: {Score}";
-        }
-
         if (scoreTMPText != null)
         {
             scoreTMPText.text = $"Score: {Score}";
         }
+    }
+
+    internal static void OnPlayerTakeDamage(PlayerMovement player)
+    {
+        player.lifePoints = Mathf.Clamp(player.lifePoints, 0, 5); // Ensure input is between 0 and 5
+        var displayString = string.Join(" ", new string('o', player.lifePoints).PadRight(5, 'x').ToCharArray());
+        Instance.p1text.text = displayString;
     }
 
     internal static void OnPlayerDestroyed(GameObject gameObject)

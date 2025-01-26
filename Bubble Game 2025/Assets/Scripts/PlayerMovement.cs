@@ -37,11 +37,11 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Sound Settings")]
     public int playerSoundNumber = 0;
+    public int playerIndex = 0;
     private bool isMoving;
 
     void Awake()
     {
-        lifePoints = 3;
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
         StartCoroutine(RepeatAction(4, CheckIdle));
@@ -190,6 +190,7 @@ public class PlayerMovement : MonoBehaviour
         var direction = (collision.contacts[0].impulse + Vector3.up) * damageForce; // opposit direction
         rb.AddForce(direction, ForceMode.Impulse);
         lifePoints -= 1;
+        GameManager.OnPlayerTakeDamage(this);
         if (lifePoints <= 0)
         {
             SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice);

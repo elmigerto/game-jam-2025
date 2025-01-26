@@ -87,14 +87,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Player alive {playerAlive}");
 
-        playerAlive -= 1;
-
-        if(playerAlive <= 0)
-        {
-            Debug.Log($"Player Defeat");
-            OnDefeat();
-            return;
-        }
         Transform player1Model = player.transform.Find("Player1");
         Transform player2Model = player.transform.Find("Player2");
 

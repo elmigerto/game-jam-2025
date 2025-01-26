@@ -2655,6 +2655,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &394185549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3083460354180574917, guid: f082351fcc6644c3cbf432416fb8d9e3, type: 3}
+  m_PrefabInstance: {fileID: 1964036407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &405152645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5385,12 +5390,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1339091073}
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
+      propertyPath: StartingInfos
+      value: 
+      objectReference: {fileID: 394185549}
+    - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: backgroundMusic
       value: 
       objectReference: {fileID: 8300000, guid: 460f0d2ec08944fa18860956c6a89f9c, type: 3}
     - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: timeScaleFactor
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330739888992088474, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
+      propertyPath: DisableInfosTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5376956718868422980, guid: 8b48902746bcf78f59819ccc9651d53d, type: 3}
       propertyPath: m_Name

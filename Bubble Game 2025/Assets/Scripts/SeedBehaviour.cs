@@ -42,7 +42,7 @@ public class SeedBehaviour : MonoBehaviour
     private void BecomePlant()
     {
         gameObject.SetActive(false);
-        plantBody.transform.position = gameObject.transform.position;
+        plantBody.transform.position = Vector3.Scale(gameObject.transform.position,new Vector3(1,0,1));
         plantBody.SetActive(true);
         Debug.Log("Im a plant now");
     }

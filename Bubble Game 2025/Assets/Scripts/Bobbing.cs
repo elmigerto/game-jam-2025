@@ -10,6 +10,7 @@ public class Bobbing : MonoBehaviour
     private float bobbingInterval = .3f; //in seconds
     private float randomOffsetAmount = 0;
     private Vector3 initialScale;
+    private float timeScaleFactor;
     void Start(){
         if (doRandomOffset)
         {
@@ -19,7 +20,11 @@ public class Bobbing : MonoBehaviour
     }
     void Update()
     {
-        float newScale = (Pow(Sin((Time.time/bobbingInterval+randomOffsetAmount+bobbingOffset-0.5f)*PI)+1,1.6f))/2; //curve
+        if (Time.timeScale != 0)
+        {
+            timeScaleFactor = 1/Time.timeScale;
+        }
+        float newScale = (Pow(Sin((Time.time*timeScaleFactor/bobbingInterval+randomOffsetAmount+bobbingOffset-0.5f)*PI)+1,1.6f))/2; //curve
         newScale = Lerp(newScale,1,1-bobbingAmount); //remap
         transform.localScale = Vector3.Scale(new Vector3(2-newScale,newScale,2-newScale),initialScale);
     }

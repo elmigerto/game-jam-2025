@@ -44,8 +44,8 @@ public class PlayerMovement : MonoBehaviour
         lifePoints = 3;
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
-        StartCoroutine(RepeatAction(3, CheckIdle));
-        StartCoroutine(RepeatAction(0.5f, PlayMovementSound));
+        StartCoroutine(RepeatAction(4, CheckIdle));
+        StartCoroutine(RepeatAction(0.4f, PlayMovementSound)); // TODO: adjust  to actual moving sound
 
 
 
@@ -130,7 +130,8 @@ public class PlayerMovement : MonoBehaviour
                 rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
             }
 
-            if (movement.magnitude > 0.1f)
+            isMoving = movement.magnitude > 0.1f;
+            if (isMoving)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(movement);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
@@ -185,14 +186,18 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(Collision collision)
     {
         // Debug.Log($"Damage: {value}");
-        SoundManager.PlayPlayerSound(SoundManager.Instance.playerDamageVoice);
         rb.linearVelocity = Vector3.zero;
         var direction = (collision.contacts[0].impulse + Vector3.up) * damageForce; // opposit direction
         rb.AddForce(direction, ForceMode.Impulse);
         lifePoints -= 1;
         if (lifePoints <= 0)
         {
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerDeadVoice);
             Destroy(this.gameObject);
+        }
+        else
+        {
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerDamageVoice);
         }
     }
 
@@ -210,7 +215,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Random.Range(1, 10) > 2)
         {
-            SoundManager.PlayPlayerSound(SoundManager.Instance.playerIdleVoice,playerSoundNumber);
+            SoundManager.PlayPlayerSound(SoundManager.Instance.playerIdleVoice, playerSoundNumber);
         }
     }
 
